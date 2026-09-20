@@ -1,0 +1,80 @@
+---
+import DossierRow from '../components/DossierRow.astro';
+import Footer from '../components/Footer.astro';
+import Masthead from '../components/Masthead.astro';
+import RedactedBar from '../components/RedactedBar.astro';
+import SealedField from '../components/SealedField.astro';
+import WorkEntry from '../components/WorkEntry.astro';
+import Layout from '../layouts/Layout.astro';
+import { projects } from '../data/projects';
+---
+
+<Layout
+    title="Tara \X/ Void"
+    description="Platform, DevEx, and security engineer. Founder / Principal Engineer at RavenFlight Industries."
+>
+    <div class="min-h-screen p-8 sm:p-14" style="background: var(--color-desk);">
+        <div
+            class="mx-auto max-w-[1296px] px-6 py-11 sm:px-[72px]"
+            style="background-color: var(--color-paper); background-image: radial-gradient(circle, color-mix(in oklab, var(--color-redact) 3.5%, transparent) 1px, transparent 1px); background-size: 6px 6px; box-shadow: 6px 6px 0 rgba(15,13,19,0.07), 12px 12px 0 rgba(15,13,19,0.035); color: var(--color-ink);"
+        >
+            <Masthead active="activities" />
+
+            <div class="flex max-w-[620px] flex-col gap-3.5 py-9 sm:py-10">
+                <DossierRow label="AKA">
+                    <RedactedBar wordLengths={[3, 8]} label="redacted" />
+                </DossierRow>
+
+                <DossierRow label="Pronouns">
+                    <a
+                        href="https://my.pronouns.page/are/xe&she"
+                        class="text-[15px] underline decoration-solid"
+                        style="color: var(--color-secondary);"
+                    >
+                        xe/xem she/her
+                    </a>
+                </DossierRow>
+
+                <DossierRow label="Role">
+                    <span class="text-[15px]">Founder / Principal Engineer</span>
+                </DossierRow>
+
+                <DossierRow label="Employer">
+                    <SealedField
+                        href="https://ravenflight.io"
+                        revealText="RavenFlight Industries"
+                        placeholder="Xxxxxxxxxxx"
+                        ariaLabel="Sealed - click to reveal employer"
+                    />
+                </DossierRow>
+
+                <div class="pt-3">
+                    <a
+                        href="/contact"
+                        class="inline-block px-7 py-3.5 text-[15px] no-underline"
+                        style="background: var(--color-verified); color: white;"
+                    >
+                        Send xyr a covert message
+                    </a>
+                </div>
+            </div>
+
+            <div class="flex flex-col">
+                <div class="border-t pt-5 pb-1 text-[15px] font-bold" style="border-color: var(--color-ink);">
+                    Reported intel
+                </div>
+                {projects.map((project) => <WorkEntry project={project} />)}
+                <div class="border-t" style="border-color: var(--color-ink);"></div>
+            </div>
+
+            <div
+                class="mt-6 border border-dashed px-4 py-3 font-mono text-[13px]"
+                style="border-color: var(--color-paper-line);"
+            >
+                GitHub: 1,842 contributions, 9 public repos, 41-day streak
+            </div>
+
+            <Footer />
+        </div>
+    </div>
+</Layout>

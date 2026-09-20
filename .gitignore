@@ -10,6 +10,11 @@ output/
 
 # Generated types
 .astro/
+worker-configuration.d.ts
+
+# Cloudflare
+.wrangler/
+dist/
 
 # Dependencies
 node_modules/

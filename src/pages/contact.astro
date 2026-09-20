@@ -1,0 +1,67 @@
+---
+import Footer from '../components/Footer.astro';
+import Masthead from '../components/Masthead.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contact - Tara \X/ Void" description="Send a covert message.">
+    <div class="min-h-screen p-8 sm:p-14" style="background: var(--color-desk);">
+        <div
+            class="mx-auto max-w-[720px] px-6 py-11 sm:px-14"
+            style="background-color: var(--color-paper); background-image: radial-gradient(circle, color-mix(in oklab, var(--color-redact) 3.5%, transparent) 1px, transparent 1px); background-size: 6px 6px; box-shadow: 6px 6px 0 rgba(15,13,19,0.07), 12px 12px 0 rgba(15,13,19,0.035); color: var(--color-ink);"
+        >
+            <Masthead active="contact" />
+
+            <!--
+                TODO: this form posts to /api/contact, which does not exist
+                yet. Still needed per the design spec: Turnstile widget +
+                server-side siteverify, Resend delivery, a honeypot check,
+                and a KV-backed rate limit. See
+                docs/superpowers/specs/2026-09-19-taraxvoid-net-design.md.
+            -->
+            <form method="POST" action="/api/contact" class="flex flex-col gap-5 py-9">
+                <label class="flex flex-col gap-1.5 text-sm">
+                    Name
+                    <input
+                        type="text"
+                        name="name"
+                        required
+                        class="border px-3 py-2 text-[15px]"
+                        style="border-color: var(--color-ink); background: var(--color-surface); color: var(--color-ink);"
+                    />
+                </label>
+                <label class="flex flex-col gap-1.5 text-sm">
+                    Email
+                    <input
+                        type="email"
+                        name="email"
+                        required
+                        class="border px-3 py-2 text-[15px]"
+                        style="border-color: var(--color-ink); background: var(--color-surface); color: var(--color-ink);"
+                    />
+                </label>
+                <label class="flex flex-col gap-1.5 text-sm">
+                    Message
+                    <textarea
+                        name="message"
+                        required
+                        rows="6"
+                        class="border px-3 py-2 text-[15px]"
+                        style="border-color: var(--color-ink); background: var(--color-surface); color: var(--color-ink);"
+                    ></textarea>
+                </label>
+                <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true" />
+
+                <button
+                    type="submit"
+                    class="w-fit px-7 py-3.5 text-[15px]"
+                    style="background: var(--color-verified); color: white;"
+                >
+                    Send xyr a covert message
+                </button>
+            </form>
+
+            <Footer />
+        </div>
+    </div>
+</Layout>

@@ -1,0 +1,169 @@
+@import url("https://fonts.googleapis.com/css2?family=Spectral:wght@400;600;700&family=Courier+Prime:wght@400;700&display=swap");
+@import "tailwindcss";
+
+/* Redaction type family, self-hosted per the McKl webfont license
+   (taraxvoid.net is the licensed domain). Regular is the readable
+   tier; the numbered cuts get progressively more bit-crushed. */
+@font-face {
+    font-family: "Redaction";
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url("/fonts/redaction/Redaction-Regular.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Redaction";
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url("/fonts/redaction/Redaction-Bold.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Redaction";
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+    src: url("/fonts/redaction/Redaction-Italic.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Redaction 10";
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url("/fonts/redaction/Redaction10-Regular.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Redaction 10";
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url("/fonts/redaction/Redaction10-Bold.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Redaction 20";
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url("/fonts/redaction/Redaction20-Regular.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Redaction 20";
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url("/fonts/redaction/Redaction20-Bold.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Redaction 35";
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url("/fonts/redaction/Redaction35-Regular.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Redaction 35";
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url("/fonts/redaction/Redaction35-Bold.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Redaction 50";
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url("/fonts/redaction/Redaction50-Regular.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Redaction 50";
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url("/fonts/redaction/Redaction50-Bold.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Redaction 70";
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url("/fonts/redaction/Redaction70-Regular.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Redaction 70";
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url("/fonts/redaction/Redaction70-Bold.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Redaction 100";
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url("/fonts/redaction/Redaction100-Regular.woff2") format("woff2");
+}
+@font-face {
+    font-family: "Redaction 100";
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+    src: url("/fonts/redaction/Redaction100-Bold.woff2") format("woff2");
+}
+
+@theme {
+    --font-body: "Spectral", Georgia, "Times New Roman", serif;
+    --font-mono: "Courier Prime", "Courier New", monospace;
+    --font-redaction: "Redaction", "Spectral", serif;
+    --font-redaction-35: "Redaction 35", "Courier Prime", monospace;
+    --font-redaction-100: "Redaction 100", "Courier Prime", monospace;
+
+    --color-desk: #dcdad4;
+    --color-paper: #f7f7f8;
+    --color-surface: #ffffff;
+    --color-ink: #1c1a22;
+    --color-border: #e5e7eb;
+    --color-paper-line: #c9c7bf;
+    --color-secondary: #6b7280;
+    --color-verified: #7c3aed;
+    --color-verified-hover: #5b21b6;
+    --color-flagged: #e0708c;
+    --color-redact: #0f0d13;
+    --color-redpen: #b23a2f;
+}
+
+@media (prefers-color-scheme: dark) {
+    @theme {
+        --color-desk: #14131a;
+        --color-paper: #1c1a22;
+        --color-surface: #252330;
+        --color-ink: #ffffff;
+        --color-border: #374151;
+        --color-paper-line: #4b4958;
+        --color-secondary: #9ca3af;
+        --color-verified: #c4b5fd;
+        --color-verified-hover: #ddd6fe;
+    }
+}
+
+body {
+    background-color: var(--color-desk);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+}
+
+a {
+    color: var(--color-ink);
+    text-decoration: underline;
+}
+a:hover {
+    color: var(--color-verified-hover);
+}
+
+/* Respect reduced motion for the View Transitions the layout defines. */
+@media (prefers-reduced-motion: reduce) {
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+        animation: none !important;
+    }
+}
