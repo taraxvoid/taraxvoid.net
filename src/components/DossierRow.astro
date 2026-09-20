@@ -1,13 +1,24 @@
 ---
 interface Props {
     label: string;
+    /** Larger, darker, Redaction-typeface label used for the dossier info block. */
+    emphasis?: boolean;
 }
 
-const { label } = Astro.props;
+const { label, emphasis = false } = Astro.props;
 ---
 
 <div class="flex items-baseline gap-2.5">
-    <span class="w-[88px] flex-shrink-0 font-mono text-xs" style="color: var(--color-secondary);">{label}</span>
+    <span
+        class={
+            emphasis
+                ? 'w-[100px] flex-shrink-0 font-redaction-35 text-sm tracking-wide'
+                : 'w-[88px] flex-shrink-0 font-mono text-xs'
+        }
+        style={`color: ${emphasis ? 'var(--color-ink)' : 'var(--color-secondary)'};`}
+    >
+        {label}
+    </span>
     <span class="mb-1 flex-1 border-b border-dotted" style="border-color: var(--color-paper-line);"></span>
     <slot />
 </div>

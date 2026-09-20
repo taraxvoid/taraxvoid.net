@@ -18,18 +18,9 @@ const links = [
 ];
 ---
 
-<header class="flex items-start justify-between gap-6 border border-ink px-5 py-4">
-    <div class="font-redaction-35 text-[22px] tracking-wide">Tara \X/ Void</div>
-    <div class="flex flex-col items-end gap-2.5">
-        <nav class="flex gap-6 text-sm">
-            {
-                links.map((link) => (
-                    <a href={link.href} aria-current={link.current ? 'page' : undefined}>
-                        {link.label}
-                    </a>
-                ))
-            }
-        </nav>
+<header class="flex flex-wrap items-center justify-between gap-4 border border-ink px-5 py-4">
+    <div class="flex flex-wrap items-center gap-3">
+        <div class="font-redaction-35 text-[22px] tracking-wide">Tara \X/ Void</div>
         <div
             class="w-fit -rotate-6 border-2 px-2.5 py-0.5 font-redaction-35 text-xs"
             style="border-color: var(--color-redpen); color: var(--color-redpen); border-radius: 3px 7px 4px 8px / 6px 3px 8px 4px; box-shadow: 0 0 0 1px color-mix(in oklab, var(--color-redpen) 15%, transparent);"
@@ -37,4 +28,40 @@ const links = [
             Confirmed Active
         </div>
     </div>
+    <nav class="flex flex-wrap gap-2.5 text-sm">
+        {
+            links.map((link) => (
+                <a
+                    href={link.href}
+                    aria-current={link.current ? 'page' : undefined}
+                    class="masthead-nav-link px-4 py-2 font-mono text-xs uppercase tracking-[0.08em]"
+                >
+                    {link.label}
+                </a>
+            ))
+        }
+    </nav>
 </header>
+
+<style>
+    a.masthead-nav-link {
+        display: inline-block;
+        border: 1px solid var(--color-ink);
+        color: var(--color-ink);
+        text-decoration: none;
+        transition:
+            background-color 0.15s ease,
+            color 0.15s ease,
+            border-color 0.15s ease;
+    }
+    a.masthead-nav-link:hover,
+    a.masthead-nav-link:focus-visible {
+        background: var(--color-ink);
+        color: var(--color-paper);
+    }
+    a.masthead-nav-link[aria-current='page'] {
+        background: var(--color-verified);
+        border-color: var(--color-verified);
+        color: white;
+    }
+</style>

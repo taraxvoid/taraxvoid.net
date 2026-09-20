@@ -3,7 +3,6 @@ import DossierRow from '../components/DossierRow.astro';
 import Footer from '../components/Footer.astro';
 import Masthead from '../components/Masthead.astro';
 import RedactedBar from '../components/RedactedBar.astro';
-import SealedField from '../components/SealedField.astro';
 import WorkEntry from '../components/WorkEntry.astro';
 import { projects } from '../data/projects';
 import Layout from '../layouts/Layout.astro';
@@ -23,31 +22,32 @@ import Layout from '../layouts/Layout.astro';
             <main>
                 <h1 class="sr-only">Tara \X/ Void</h1>
                 <div class="flex max-w-[620px] flex-col gap-3.5 py-9 sm:py-10">
-                    <DossierRow label="AKA">
+                    <DossierRow label="AKA" emphasis>
                         <RedactedBar wordLengths={[3, 8]} label="redacted" />
                     </DossierRow>
 
-                    <DossierRow label="Pronouns">
+                    <DossierRow label="Pronouns" emphasis>
                         <a
                             href="https://my.pronouns.page/are/xe&she"
-                            class="text-[15px] underline decoration-solid"
+                            class="font-redaction-35 text-[15px] tracking-wide underline decoration-solid"
                             style="color: var(--color-secondary);"
                         >
                             xe/xem she/her
                         </a>
                     </DossierRow>
 
-                    <DossierRow label="Role">
-                        <span class="text-[15px]">Founder / Principal Engineer</span>
+                    <DossierRow label="Role" emphasis>
+                        <span class="font-redaction-35 text-[15px] tracking-wide">Founder / Principal Engineer</span>
                     </DossierRow>
 
-                    <DossierRow label="Employer">
-                        <SealedField
+                    <DossierRow label="Employer" emphasis>
+                        <a
                             href="https://ravenflight.io"
-                            revealText="RavenFlight Industries"
-                            placeholder="Xxxxxxxxxxx"
-                            ariaLabel="Sealed - click to reveal employer"
-                        />
+                            class="inline-flex items-baseline gap-px font-redaction-35 text-[15px] tracking-wide underline"
+                            style="color: var(--color-ink);"
+                        >
+                            <span aria-hidden="true">[</span>RavenFlight<span aria-hidden="true">]</span>
+                        </a>
                     </DossierRow>
 
                     <div class="pt-3">
