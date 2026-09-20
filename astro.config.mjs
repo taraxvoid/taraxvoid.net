@@ -7,10 +7,10 @@ export default defineConfig({
     site: 'https://taraxvoid.net',
     output: 'static',
     vite: {
-        plugins: [tailwindcss()],
+        plugins: [tailwindcss()]
     },
     integrations: [sitemap()],
     adapter: cloudflare({
-        imageService: 'passthrough',
-    }),
+        imageService: 'passthrough'
+    })
 });

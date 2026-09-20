@@ -2,8 +2,8 @@
 import DossierRow from '../components/DossierRow.astro';
 import Footer from '../components/Footer.astro';
 import Masthead from '../components/Masthead.astro';
-import Layout from '../layouts/Layout.astro';
 import { coreSkills, education, experience, location, summary } from '../data/resume';
+import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Resume - Tara \X/ Void" description={summary}>
@@ -14,6 +14,8 @@ import { coreSkills, education, experience, location, summary } from '../data/re
         >
             <Masthead active="resume" />
 
+            <main>
+            <h1 class="sr-only">Resume</h1>
             <div class="flex flex-col gap-3 py-7">
                 <DossierRow label="Based">
                     <span class="text-[15px]">{location}</span>
@@ -64,6 +66,7 @@ import { coreSkills, education, experience, location, summary } from '../data/re
                 <h2 class="pb-2 text-[15px] font-bold">Education</h2>
                 <p class="pb-8 text-[15px]">{education.school} - {education.degree}</p>
             </div>
+            </main>
 
             <Footer />
         </div>

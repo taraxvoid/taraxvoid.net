@@ -8,17 +8,17 @@ const { active } = Astro.props;
 const navLink = (href: string, label: string, key: string) => ({
     href,
     label,
-    current: active === key,
+    current: active === key
 });
 
 const links = [
     navLink('/activities', 'Activities', 'activities'),
     navLink('/resume', 'Resume', 'resume'),
-    navLink('/contact', 'Contact', 'contact'),
+    navLink('/contact', 'Contact', 'contact')
 ];
 ---
 
-<div class="flex items-start justify-between gap-6 border border-ink px-5 py-4">
+<header class="flex items-start justify-between gap-6 border border-ink px-5 py-4">
     <div class="font-redaction-35 text-[22px] tracking-wide">Tara \X/ Void</div>
     <div class="flex flex-col items-end gap-2.5">
         <nav class="flex gap-6 text-sm">
@@ -37,4 +37,4 @@ const links = [
             Confirmed Active
         </div>
     </div>
-</div>
+</header>

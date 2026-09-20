@@ -16,6 +16,11 @@ worker-configuration.d.ts
 .wrangler/
 dist/
 
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+
 # Dependencies
 node_modules/
 

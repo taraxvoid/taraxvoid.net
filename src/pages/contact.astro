@@ -12,6 +12,8 @@ import Layout from '../layouts/Layout.astro';
         >
             <Masthead active="contact" />
 
+            <main>
+            <h1 class="sr-only">Contact</h1>
             <!--
                 TODO: this form posts to /api/contact, which does not exist
                 yet. Still needed per the design spec: Turnstile widget +
@@ -60,6 +62,7 @@ import Layout from '../layouts/Layout.astro';
                     Send xyr a covert message
                 </button>
             </form>
+            </main>
 
             <Footer />
         </div>

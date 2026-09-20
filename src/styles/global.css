@@ -131,8 +131,12 @@
     --color-redpen: #b23a2f;
 }
 
+/* Plain custom-property overrides, not @theme: @theme registers the
+   token/utility once at build time and does not scope correctly inside
+   a media query, so nesting it here silently applied the dark values
+   unconditionally (caught by a failing color-contrast a11y test). */
 @media (prefers-color-scheme: dark) {
-    @theme {
+    :root {
         --color-desk: #14131a;
         --color-paper: #1c1a22;
         --color-surface: #252330;

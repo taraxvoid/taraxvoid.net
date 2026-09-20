@@ -2,8 +2,8 @@
 import Footer from '../components/Footer.astro';
 import Masthead from '../components/Masthead.astro';
 import WorkEntry from '../components/WorkEntry.astro';
-import Layout from '../layouts/Layout.astro';
 import { projects } from '../data/projects';
+import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Activities - Tara \X/ Void" description="Case studies from RavenFlight Industries and community engineering work.">
@@ -14,13 +14,14 @@ import { projects } from '../data/projects';
         >
             <Masthead active="activities" />
 
-            <div class="flex flex-col py-9">
-                <div class="border-t pt-5 pb-1 text-[15px] font-bold" style="border-color: var(--color-ink);">
+            <main class="flex flex-col py-9">
+                <h1 class="sr-only">Activities</h1>
+                <h2 class="border-t pt-5 pb-1 text-[15px] font-bold" style="border-color: var(--color-ink);">
                     Reported intel
-                </div>
+                </h2>
                 {projects.map((project) => <WorkEntry project={project} />)}
                 <div class="border-t" style="border-color: var(--color-ink);"></div>
-            </div>
+            </main>
 
             <Footer />
         </div>

@@ -14,7 +14,7 @@ export const projects: Project[] = [
         title: 'rvnflt',
         description:
             'Multi-tenant SaaS on Cloudflare Workers, routing every LLM call through one callModel() boundary for cost telemetry and provider fallback.',
-        visibility: 'private',
+        visibility: 'private'
     },
     {
         ref: 'RVN-02',
@@ -24,14 +24,14 @@ export const projects: Project[] = [
         visibility: 'public',
         href: 'https://ravenflight.io',
         linkLabel: 'View site',
-        annotation: 'shipped',
+        annotation: 'shipped'
     },
     {
         ref: 'RVN-03',
         title: 'flock',
         description:
             'Scale-to-zero self-hosted GitHub Actions runner pool: zero public ingress (SSH and the k3s API are Tailscale-only), secrets encrypted at rest with SOPS + age, and first-boot node joins use one-hour single-use OAuth keys instead of 90-day static tokens.',
-        visibility: 'private',
+        visibility: 'private'
     },
     {
         ref: 'TXV-01',
@@ -40,7 +40,7 @@ export const projects: Project[] = [
             'Reusable GitHub Actions workflows, SHA-pinned and hardened with zizmor and actionlint, shared across four production sites.',
         visibility: 'public',
         href: 'https://github.com/taraxvoid/voidflow',
-        linkLabel: 'View source',
+        linkLabel: 'View source'
     },
     {
         ref: 'TXV-02',
@@ -49,6 +49,6 @@ export const projects: Project[] = [
             "Three free community sites for Omaha's queer and music scenes, run with the same CI discipline as commercial work: shared voidflow pipelines, Playwright and axe-core gates, and a license-policy check on every dependency change.",
         visibility: 'public',
         href: 'https://queeromaha.net',
-        linkLabel: 'View sites',
-    },
+        linkLabel: 'View sites'
+    }
 ];

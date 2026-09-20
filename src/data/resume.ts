@@ -27,8 +27,8 @@ export const experience: ExperienceEntry[] = [
             'Bun/TypeScript monorepo (Hono API, Astro admin dashboard, Zod schemas, Drizzle + D1) running entirely on Cloudflare Workers, Workflows, D1, R2, KV and Durable Objects.',
             'Astro + React islands + Tailwind v4 marketing site with live audits, KV-backed rate limiting, and a rehearsed rollback/roll-forward drill on every staging deploy.',
             'Five reusable GitHub Actions workflows and three composite actions consumed by four production sites, hardened with actionlint, zizmor, and ShellCheck.',
-            'Scale-to-zero self-hosted GitHub Actions runner pool with zero public ingress, SOPS + age secrets, and single-use OAuth join tokens.',
-        ],
+            'Scale-to-zero self-hosted GitHub Actions runner pool with zero public ingress, SOPS + age secrets, and single-use OAuth join tokens.'
+        ]
     },
     {
         org: 'Lindsay Corporation',
@@ -37,8 +37,8 @@ export const experience: ExperienceEntry[] = [
         location: 'Omaha, NE',
         highlights: [
             'Owned business-critical hosting and CI/CD on Azure and GitLab, with developer productivity as the explicit success metric.',
-            'Introduced agentic development workflows (GitHub Copilot, Claude) to the engineering team.',
-        ],
+            'Introduced agentic development workflows (GitHub Copilot, Claude) to the engineering team.'
+        ]
     },
     {
         org: 'Datadog, Inc',
@@ -47,8 +47,8 @@ export const experience: ExperienceEntry[] = [
         location: 'San Francisco Bay Area',
         highlights: [
             'Product security for services carrying billions in revenue; secured Go, Python, Kafka, Redis, NoSQL, and Postgres code paths.',
-            'Implemented DevSecOps controls: code security, secrets scanning, and security review programs across product, database, infrastructure, and engineering teams.',
-        ],
+            'Implemented DevSecOps controls: code security, secrets scanning, and security review programs across product, database, infrastructure, and engineering teams.'
+        ]
     },
     {
         org: 'Salesforce, Inc',
@@ -56,8 +56,8 @@ export const experience: ExperienceEntry[] = [
         dates: 'Feb 2019 - Jan 2022',
         location: 'San Francisco Bay Area',
         highlights: [
-            'Built and owned DevOps for a production threat-intelligence platform on AWS: Python, Redis, DynamoDB, Kafka, Celery / RabbitMQ, Lambda.',
-        ],
+            'Built and owned DevOps for a production threat-intelligence platform on AWS: Python, Redis, DynamoDB, Kafka, Celery / RabbitMQ, Lambda.'
+        ]
     },
     {
         org: 'Tile, Inc',
@@ -66,8 +66,8 @@ export const experience: ExperienceEntry[] = [
         location: 'San Francisco Bay Area',
         highlights: [
             'Owned product security for millions of users across mobile, cloud, and embedded hardware.',
-            'Ran threat intelligence, threat modeling, pentesting, and bug-bounty programs.',
-        ],
+            'Ran threat intelligence, threat modeling, pentesting, and bug-bounty programs.'
+        ]
     },
     {
         org: 'MITRE Corporation',
@@ -76,9 +76,9 @@ export const experience: ExperienceEntry[] = [
         location: 'McLean, VA',
         highlights: [
             'Published security research in IEEE and Springer; developed sensitive and classified research.',
-            'Wrote mitigations and threat modeling for MITRE ATT&CK; helped design and implement the STIX threat-intelligence sharing format.',
-        ],
-    },
+            'Wrote mitigations and threat modeling for MITRE ATT&CK; helped design and implement the STIX threat-intelligence sharing format.'
+        ]
+    }
 ];
 
 export const coreSkills = [
@@ -87,10 +87,10 @@ export const coreSkills = [
     'CI/CD & DevEx: GitHub Actions (reusable workflows, self-hosted runners), release-please, git-cliff, Conventional Commits',
     'DevSecOps & Supply Chain: gitleaks, SOPS + age, Grype, zizmor, actionlint, CodeQL / Semgrep / Snyk',
     'Languages: TypeScript / JavaScript (Bun, Node), Python (uv, ruff, pytest), Bash, HCL, SQL, Go',
-    'Frameworks & Data: Hono, Astro, React, Tailwind, Drizzle ORM, Zod, Postgres, SQLite / D1',
+    'Frameworks & Data: Hono, Astro, React, Tailwind, Drizzle ORM, Zod, Postgres, SQLite / D1'
 ];
 
 export const education = {
     school: 'University of Nebraska at Omaha',
-    degree: 'B.S. Computer Science, Minor in Psychology, magna cum laude',
+    degree: 'B.S. Computer Science, Minor in Psychology, magna cum laude'
 };
