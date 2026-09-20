@@ -1,0 +1,36 @@
+---
+// A "sealed" field: real content shown as a redacted mark that peeks on
+// hover and reveals (plus follows the link) on click/tap. Unlike
+// RedactedBar, this is never used for content that must stay hidden -
+// only for real links being presented as a reveal.
+interface Props {
+    href: string;
+    revealText: string;
+    placeholder: string;
+    ariaLabel: string;
+}
+
+const { href, revealText, placeholder, ariaLabel } = Astro.props;
+---
+
+<span class="sealed-field inline-flex items-baseline gap-px font-mono text-sm" style="color: var(--color-redact);">
+    <span>[</span>
+    <a href={href} aria-label={ariaLabel} class="sealed-field__link underline">
+        <span class="sealed-field__redacted font-redaction-100 tracking-wide">{placeholder}</span>
+        <span class="sealed-field__real hidden">{revealText}</span>
+    </a>
+    <span>]</span>
+</span>
+
+<style>
+    .sealed-field__link:hover .sealed-field__redacted,
+    .sealed-field__link:focus-visible .sealed-field__redacted,
+    .sealed-field__link:active .sealed-field__redacted {
+        display: none;
+    }
+    .sealed-field__link:hover .sealed-field__real,
+    .sealed-field__link:focus-visible .sealed-field__real,
+    .sealed-field__link:active .sealed-field__real {
+        display: inline;
+    }
+</style>

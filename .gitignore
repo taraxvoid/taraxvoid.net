@@ -10,6 +10,16 @@ output/
 
 # Generated types
 .astro/
+worker-configuration.d.ts
+
+# Cloudflare
+.wrangler/
+dist/
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
 
 # Dependencies
 node_modules/

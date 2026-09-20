@@ -1,0 +1,15 @@
+---
+import { execSync } from 'node:child_process';
+
+let rev = 'unknown';
+try {
+    rev = execSync('git rev-parse --short HEAD').toString().trim();
+} catch {
+    // no git context at build time (e.g. a shallow deploy checkout); leave the fallback
+}
+---
+
+<footer class="mt-6 flex flex-col items-center gap-1.5 border-t border-ink pt-6">
+    <div class="font-mono text-xs" style="color: var(--color-secondary);">taraxvoid.net, rev {rev}</div>
+    <div class="font-mono text-[10px] tracking-[2px]" style="color: var(--color-paper-line);">end of file</div>
+</footer>

@@ -1,0 +1,29 @@
+---
+import Footer from '../components/Footer.astro';
+import Masthead from '../components/Masthead.astro';
+import WorkEntry from '../components/WorkEntry.astro';
+import { projects } from '../data/projects';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Activities - Tara \X/ Void" description="Case studies from RavenFlight Industries and community engineering work.">
+    <div class="min-h-screen p-8 sm:p-14" style="background: var(--color-desk);">
+        <div
+            class="mx-auto max-w-[1296px] px-6 py-11 sm:px-[72px]"
+            style="background-color: var(--color-paper); background-image: radial-gradient(circle, color-mix(in oklab, var(--color-redact) 3.5%, transparent) 1px, transparent 1px); background-size: 6px 6px; box-shadow: 6px 6px 0 rgba(15,13,19,0.07), 12px 12px 0 rgba(15,13,19,0.035); color: var(--color-ink);"
+        >
+            <Masthead active="activities" />
+
+            <main class="flex flex-col py-9">
+                <h1 class="sr-only">Activities</h1>
+                <h2 class="border-t pt-5 pb-1 text-[15px] font-bold" style="border-color: var(--color-ink);">
+                    Reported intel
+                </h2>
+                {projects.map((project) => <WorkEntry project={project} />)}
+                <div class="border-t" style="border-color: var(--color-ink);"></div>
+            </main>
+
+            <Footer />
+        </div>
+    </div>
+</Layout>
