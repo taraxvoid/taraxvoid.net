@@ -15,9 +15,9 @@ import Layout from '../layouts/Layout.astro';
             <Masthead active="activities" />
 
             <main class="flex flex-col py-9">
-                <h1 class="sr-only">Activities</h1>
+                <h1 class="sr-only">Known Activities</h1>
                 <h2 class="border-t pt-5 pb-1 text-[15px] font-bold" style="border-color: var(--color-ink);">
-                    Reported intel
+                    Intel Collections
                 </h2>
                 {projects.map((project) => <WorkEntry project={project} />)}
                 <div class="border-t" style="border-color: var(--color-ink);"></div>
