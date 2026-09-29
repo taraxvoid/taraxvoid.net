@@ -2,7 +2,7 @@
     "name": "taraxvoid.net",
     "type": "module",
     "version": "0.1.0",
-    "description":"taraxvoid.net portfolio/resume site",
+    "description": "taraxvoid.net portfolio/resume site",
     "private": true,
     "scripts": {
         "types": "wrangler types",
