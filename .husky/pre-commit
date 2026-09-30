@@ -1,0 +1,28 @@
+#!/bin/sh
+git diff --cached --quiet && exit 0
+
+bun run format || exit 1
+
+git diff --cached --name-only --diff-filter=d | while IFS= read -r file; do
+  git add -- "$file" || exit 1
+done || exit 1
+
+if [ ! -d node_modules ]; then
+  echo "pre-commit: 'node_modules' is missing, dependencies aren't installed."
+  echo "          Run 'bun install' before committing, then commit again."
+  exit 1
+fi
+
+bun run lint:actions || exit 1
+bun run check || exit 1
+bun run test:unit || exit 1
+
+if git diff --cached --name-only | grep -qE '(^|/)(package\.json|bun\.lock)$'; then
+  bun run check:licenses || exit 1
+fi
+
+# local-only (not CI): hits a remote vulnerability database, so only run when
+# dependencies changed
+if git diff --cached --name-only | grep -qE '(^|/)(package\.json|bun\.lock)$'; then
+  bun run audit || exit 1
+fi

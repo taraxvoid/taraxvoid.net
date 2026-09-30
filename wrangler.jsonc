@@ -6,6 +6,18 @@
         "directory": "./dist",
         "binding": "ASSETS"
     },
+    "vars": {
+        "TURNSTILE_HOSTNAMES": "taraxvoid.net,taraxvoid.com",
+        "CONTACT_FROM": "contact@taraxvoid.net",
+        "CONTACT_TO": "void@taraxvoid.net"
+        // void@ is routed to me on cloudflare's end (avoiding putting my personal email in this potentially public config)
+    },
+    "kv_namespaces": [
+        {
+            "binding": "RATE_LIMIT",
+            "id": "d036d28305cc4859869f183e109c4aa9"
+        }
+    ],
     "observability": {
         "enabled": true
     },

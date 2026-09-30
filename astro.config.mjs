@@ -7,7 +7,12 @@ export default defineConfig({
     site: 'https://taraxvoid.net',
     output: 'static',
     vite: {
-        plugins: [tailwindcss()]
+        plugins: [tailwindcss()],
+        optimizeDeps: {
+            // Missing from the adapter's prebundle list; discovering them late
+            // triggers a mid-startup re-optimize that crashes the dev runner.
+            include: ['astro/app/manifest', 'astro/logger/json']
+        }
     },
     integrations: [sitemap()],
     adapter: cloudflare({
