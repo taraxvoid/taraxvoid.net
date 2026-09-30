@@ -11,11 +11,7 @@ const navLink = (href: string, label: string, key: string) => ({
     current: active === key
 });
 
-const links = [
-    navLink('/activities', 'Activities', 'activities'),
-    navLink('/resume', 'Resume', 'resume'),
-    navLink('/contact', 'Contact', 'contact')
-];
+const links = [navLink('/activities', 'Activities', 'activities'), navLink('/resume', 'Resume', 'resume')];
 ---
 
 <header class="flex flex-wrap items-center justify-between gap-4 border border-ink px-5 py-4">
