@@ -1,4 +1,5 @@
 ---
+import ContactForm from '../components/ContactForm.astro';
 import DossierRow from '../components/DossierRow.astro';
 import Footer from '../components/Footer.astro';
 import Masthead from '../components/Masthead.astro';
@@ -52,15 +53,8 @@ import Layout from '../layouts/Layout.astro';
                         </Spoiler>
                     </DossierRow>
 
-                    <div class="pt-3">
-                        <a
-                            href="/contact"
-                            class="inline-block px-7 py-3.5 text-[15px] no-underline"
-                            style="background: var(--color-verified); color: var(--color-on-verified);"
-                        >
-                            Send Message
-                        </a>
-                    </div>
+		    <hr />
+                    <ContactForm />
                 </div>
 
                 <div class="flex flex-col">

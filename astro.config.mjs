@@ -14,6 +14,7 @@ export default defineConfig({
             include: ['astro/app/manifest', 'astro/logger/json']
         }
     },
+    redirects: { '/contact': '/#contact' },
     integrations: [sitemap()],
     adapter: cloudflare({
         imageService: 'passthrough'
