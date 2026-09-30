@@ -7,13 +7,13 @@ const form = (fields: Record<string, string>) => {
     return data;
 };
 
-const valid = { name: 'Ada', email: 'ada@example.com', message: 'hello', website: '' };
+const valid = { message: 'hello', website: '' };
 
 describe('parseContact', () => {
     it('accepts a valid submission and trims fields', () => {
-        expect(parseContact(form({ ...valid, name: '  Ada  ' }))).toEqual({
+        expect(parseContact(form({ ...valid, message: '  hello  ' }))).toEqual({
             kind: 'ok',
-            data: { name: 'Ada', email: 'ada@example.com', message: 'hello' }
+            data: { message: 'hello' }
         });
     });
 
@@ -23,11 +23,8 @@ describe('parseContact', () => {
     });
 
     it.each([
-        ['missing name', { name: '' }],
-        ['bad email', { email: 'not-an-email' }],
         ['empty message', { message: '   ' }],
-        ['oversized message', { message: 'x'.repeat(5001) }],
-        ['oversized name', { name: 'x'.repeat(101) }]
+        ['oversized message', { message: 'x'.repeat(141) }]
     ])('rejects %s', (_label, override) => {
         expect(parseContact(form({ ...valid, ...override })).kind).toBe('invalid');
     });
@@ -40,15 +37,11 @@ describe('parseContact', () => {
 });
 
 describe('buildEmail', () => {
-    it('sets reply_to to the submitter and strips newlines from the subject', () => {
-        const email = buildEmail(
-            { name: 'Ada\r\nBcc: evil@example.com', email: 'ada@example.com', message: 'hi' },
-            'contact@taraxvoid.net',
-            'inbox@example.com'
-        );
-        expect(email.reply_to).toBe('ada@example.com');
+    it('addresses the inbox and uses the message as the body', () => {
+        const email = buildEmail({ message: 'hi' }, 'contact@taraxvoid.net', 'inbox@example.com');
+        expect(email.from).toBe('contact@taraxvoid.net');
         expect(email.to).toEqual(['inbox@example.com']);
-        expect(email.subject).not.toMatch(/[\r\n]/);
+        expect(email.text).toBe('hi');
     });
 });
 
