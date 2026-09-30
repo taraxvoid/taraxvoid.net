@@ -38,7 +38,12 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
         return forbidden();
     }
 
-    let result: { success?: boolean; action?: string; hostname?: string };
+    let result: {
+        success?: boolean;
+        action?: string;
+        hostname?: string;
+        metadata?: { result_with_testing_key?: boolean };
+    };
     try {
         const verify = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
             method: 'POST',
@@ -56,9 +61,11 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
         return forbidden();
     }
 
+    // Cloudflare's dummy secrets (local dev only) return no action, so skip that check for them.
+    const testing = result.metadata?.result_with_testing_key === true;
     if (
         result.success !== true ||
-        result.action !== EXPECTED_ACTION ||
+        (!testing && result.action !== EXPECTED_ACTION) ||
         !result.hostname ||
         !expectedHostnames.has(result.hostname)
     ) {
@@ -68,6 +75,12 @@ export const POST: APIRoute = async ({ request, clientAddress }) => {
     // Claim the slot before sending so concurrent submissions can't both pass;
     // release it if delivery fails so the sender can retry.
     await env.RATE_LIMIT.put(limitKey, '1', { expirationTtl: RATE_LIMIT_TTL_SECONDS });
+
+    // Local dev only: log instead of sending. Never set in wrangler.jsonc or prod secrets.
+    if (env.CONTACT_DRY_RUN === '1') {
+        console.log('contact dry run', buildEmail(parsed.data, env.CONTACT_FROM, env.CONTACT_TO));
+        return Response.json({ ok: true });
+    }
 
     try {
         const send = await fetch('https://api.resend.com/emails', {

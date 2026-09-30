@@ -6,5 +6,6 @@ declare namespace Cloudflare {
     interface Env {
         TURNSTILE_SECRET: string;
         RESEND_API_KEY: string;
+        CONTACT_DRY_RUN?: string;
     }
 }
