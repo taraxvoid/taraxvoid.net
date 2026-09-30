@@ -15,7 +15,7 @@ const { href, revealText, placeholder, ariaLabel } = Astro.props;
 
 <span class="sealed-field inline-flex items-baseline gap-px font-mono text-sm" style="color: var(--color-redact);">
     <span>[</span>
-    <a href={href} aria-label={ariaLabel} class="sealed-field__link underline">
+    <a href={href} target="_blank" rel="noopener noreferrer" aria-label={ariaLabel} class="sealed-field__link underline">
         <span class="sealed-field__redacted font-redaction-100 tracking-wide">{placeholder}</span>
         <span class="sealed-field__real hidden">{revealText}</span>
     </a>

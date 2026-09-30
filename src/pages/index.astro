@@ -16,11 +16,11 @@ import Layout from '../layouts/Layout.astro';
 >
     <div class="min-h-screen bg-desk p-8 sm:p-14">
         <div
-            class="sheet mx-auto max-w-[1296px] px-6 py-11 sm:px-[72px]"
+            transition:name="sheet" class="sheet mx-auto max-w-[1296px] px-6 py-11 sm:px-[72px]"
         >
             <Masthead />
 
-            <main>
+            <main transition:name="content">
                 <h1 class="sr-only">Tara \X/ Void</h1>
                 <div class="flex max-w-[620px] flex-col gap-3.5 py-9 sm:py-10">
                     <DossierRow label="AKA" emphasis>
@@ -30,6 +30,8 @@ import Layout from '../layouts/Layout.astro';
                     <DossierRow label="Pronouns" emphasis>
                         <a
                             href="https://my.pronouns.page/are/xe&she"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             class="font-redaction-35 text-[15px] tracking-wide underline decoration-solid"
                             style="color: var(--color-secondary);"
                         >
@@ -45,6 +47,8 @@ import Layout from '../layouts/Layout.astro';
                         <Spoiler label="Employer (spoiler, activate to reveal)">
                             <a
                                 href="https://ravenflight.io"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 class="inline-flex items-baseline gap-px font-redaction-20 text-[15px] tracking-wide underline"
                                 style="color: var(--color-ink);"
                             >

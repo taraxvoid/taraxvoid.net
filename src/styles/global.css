@@ -114,6 +114,7 @@
     --font-body: "Spectral", Georgia, "Times New Roman", serif;
     --font-mono: "Courier Prime", "Courier New", monospace;
     --font-redaction: "Redaction", "Spectral", serif;
+    --font-redaction-20: "Redaction 20", "Courier Prime", monospace;
     --font-redaction-35: "Redaction 35", "Courier Prime", monospace;
     --font-redaction-100: "Redaction 100", "Courier Prime", monospace;
 
@@ -194,4 +195,18 @@ a:hover {
     ::view-transition-new(*) {
         animation: none !important;
     }
+}
+
+/* The paper frame keeps one width on every page, and snaps to the next
+   page's height instead of morphing (the morph read as the page resizing).
+   Only the content inside it crossfades. */
+::view-transition-group(sheet),
+::view-transition-group(content) {
+    animation: none;
+}
+::view-transition-old(sheet) {
+    display: none;
+}
+::view-transition-new(sheet) {
+    animation: none;
 }

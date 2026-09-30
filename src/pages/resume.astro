@@ -9,11 +9,11 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Resume - Tara \X/ Void" description={summary}>
     <div class="min-h-screen bg-desk p-8 sm:p-14">
         <div
-            class="sheet mx-auto max-w-[900px] px-6 py-11 sm:px-14"
+            transition:name="sheet" class="sheet mx-auto max-w-[1296px] px-6 py-11 sm:px-[72px]"
         >
             <Masthead active="resume" />
 
-            <main>
+            <main transition:name="content" class="max-w-[900px]">
             <h1 class="sr-only">Resume</h1>
             <div class="flex flex-col gap-3 py-7">
                 <DossierRow label="Based">

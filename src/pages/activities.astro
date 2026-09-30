@@ -9,11 +9,11 @@ import Layout from '../layouts/Layout.astro';
 <Layout title="Activities - Tara \X/ Void" description="Case studies from RavenFlight Industries and community engineering work.">
     <div class="min-h-screen bg-desk p-8 sm:p-14">
         <div
-            class="sheet mx-auto max-w-[1296px] px-6 py-11 sm:px-[72px]"
+            transition:name="sheet" class="sheet mx-auto max-w-[1296px] px-6 py-11 sm:px-[72px]"
         >
             <Masthead active="activities" />
 
-            <main class="flex flex-col py-9">
+            <main transition:name="content" class="flex flex-col py-9">
                 <h1 class="sr-only">Known Activities</h1>
                 <h2 class="border-t pt-5 pb-1 text-[15px] font-bold" style="border-color: var(--color-ink);">
                     Intel Collections

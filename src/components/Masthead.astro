@@ -1,4 +1,6 @@
 ---
+import ThemeToggle from './ThemeToggle.astro';
+
 interface Props {
     active?: 'activities' | 'resume';
 }
@@ -15,7 +17,7 @@ const links = [navLink('/activities', 'Activities', 'activities'), navLink('/res
 ---
 
 <header class="flex flex-wrap items-center justify-between gap-4 border border-ink px-5 py-4">
-    <div class="flex flex-wrap items-center gap-3">
+    <a href="/" class="masthead-lockup flex flex-wrap items-center gap-3" aria-label="Tara X Void, home">
         <div class="font-redaction-35 text-[22px] tracking-wide">Tara \X/ Void</div>
         <div
             class="w-fit -rotate-6 border-2 px-2.5 py-0.5 font-redaction-35 text-xs"
@@ -23,7 +25,8 @@ const links = [navLink('/activities', 'Activities', 'activities'), navLink('/res
         >
             Active
         </div>
-    </div>
+    </a>
+    <div class="flex flex-wrap items-center gap-2.5">
     <nav class="flex flex-wrap gap-2.5 text-sm">
         {
             links.map((link) => (
@@ -37,9 +40,20 @@ const links = [navLink('/activities', 'Activities', 'activities'), navLink('/res
             ))
         }
     </nav>
+    <ThemeToggle />
+    </div>
 </header>
 
 <style>
+    a.masthead-lockup {
+        color: var(--color-ink);
+        text-decoration: none;
+    }
+    a.masthead-lockup:hover,
+    a.masthead-lockup:focus-visible {
+        color: var(--color-ink);
+        opacity: 0.75;
+    }
     a.masthead-nav-link {
         display: inline-block;
         border: 1px solid var(--color-ink);

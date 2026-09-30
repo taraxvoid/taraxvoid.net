@@ -13,7 +13,7 @@ const dataTheme = (page: Page) => page.evaluate(() => document.documentElement.g
 
 const storedTheme = (page: Page) => page.evaluate(() => localStorage.getItem('theme'));
 
-const radio = (page: Page, name: string) => page.getByRole('radio', { name, exact: true });
+const toggle = (page: Page) => page.getByRole('button', { name: /switch to (light|dark) theme/i });
 
 test.describe('system is the default', () => {
     test.describe('browser prefers light', () => {
@@ -23,7 +23,7 @@ test.describe('system is the default', () => {
             await page.goto('/');
             expect(await dataTheme(page)).toBeNull();
             expect(await bodyLuminance(page)).toBeGreaterThan(0.8);
-            await expect(radio(page, 'System')).toBeChecked();
+            await expect(toggle(page)).toHaveAccessibleName('Switch to dark theme');
         });
     });
 
@@ -43,7 +43,7 @@ test.describe('explicit choice', () => {
 
     test('dark overrides a light browser and persists across reloads', async ({ page }) => {
         await page.goto('/');
-        await radio(page, 'Dark').check();
+        await toggle(page).click();
 
         expect(await dataTheme(page)).toBe('dark');
         expect(await storedTheme(page)).toBe('dark');
@@ -51,13 +51,13 @@ test.describe('explicit choice', () => {
 
         await page.reload();
         expect(await dataTheme(page)).toBe('dark');
-        await expect(radio(page, 'Dark')).toBeChecked();
+        await expect(toggle(page)).toHaveAccessibleName('Switch to light theme');
     });
 
-    test('choosing system again clears the attribute and the stored key', async ({ page }) => {
+    test('toggling back to the browser preference clears the attribute and the stored key', async ({ page }) => {
         await page.goto('/');
-        await radio(page, 'Dark').check();
-        await radio(page, 'System').check();
+        await toggle(page).click();
+        await toggle(page).click();
 
         expect(await dataTheme(page)).toBeNull();
         expect(await storedTheme(page)).toBeNull();
@@ -66,22 +66,21 @@ test.describe('explicit choice', () => {
 
     test('the toggle works from the keyboard', async ({ page }) => {
         await page.goto('/');
-        await radio(page, 'System').focus();
-        await page.keyboard.press('ArrowRight');
+        await toggle(page).focus();
+        await page.keyboard.press('Enter');
 
-        await expect(radio(page, 'Light')).toBeChecked();
-        expect(await dataTheme(page)).toBe('light');
+        expect(await dataTheme(page)).toBe('dark');
     });
 
     test('browser chrome color follows the explicit choice', async ({ page }) => {
         await page.goto('/');
-        await radio(page, 'Dark').check();
+        await toggle(page).click();
         const colors = await page
             .locator('meta[name="theme-color"]')
             .evaluateAll((els) => els.map((e) => e.getAttribute('content')));
         expect(colors).toEqual(['#100f14', '#100f14']);
 
-        await radio(page, 'System').check();
+        await toggle(page).click();
         const restored = await page
             .locator('meta[name="theme-color"]')
             .evaluateAll((els) => els.map((e) => e.getAttribute('content')));
@@ -103,16 +102,16 @@ test.describe('without JavaScript', () => {
 
     test('hides the dead control and still follows the browser', async ({ page }) => {
         await page.goto('/');
-        await expect(page.getByRole('group', { name: 'Color theme' })).toBeHidden();
+        await expect(page.locator('[data-theme-toggle]')).toBeHidden();
         expect(await bodyLuminance(page)).toBeLessThan(0.2);
     });
 });
 
 test('an explicit choice survives client-side navigation', async ({ page }) => {
     await page.goto('/');
-    await radio(page, 'Dark').check();
+    await toggle(page).click();
     await page.getByRole('link', { name: 'Resume' }).click();
     await expect(page).toHaveURL(/\/resume\/?$/);
     expect(await dataTheme(page)).toBe('dark');
-    await expect(radio(page, 'Dark')).toBeChecked();
+    await expect(toggle(page)).toHaveAccessibleName('Switch to light theme');
 });

@@ -33,7 +33,7 @@ const spineColor = project.visibility === 'public' ? 'var(--color-verified)' : '
     </div>
     {
         project.visibility === 'public' ? (
-            <a href={project.href} class="flex-shrink-0 whitespace-nowrap pt-1 text-sm">
+            <a href={project.href} target="_blank" rel="noopener noreferrer" class="flex-shrink-0 whitespace-nowrap pt-1 text-sm">
                 {project.linkLabel}
             </a>
         ) : (
