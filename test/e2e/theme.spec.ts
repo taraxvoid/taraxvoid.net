@@ -112,7 +112,7 @@ test('an explicit choice survives client-side navigation', async ({ page }) => {
     await page.goto('/');
     await radio(page, 'Dark').check();
     await page.getByRole('link', { name: 'Resume' }).click();
-    await expect(page).toHaveURL(/\/resume$/);
+    await expect(page).toHaveURL(/\/resume\/?$/);
     expect(await dataTheme(page)).toBe('dark');
     await expect(radio(page, 'Dark')).toBeChecked();
 });
