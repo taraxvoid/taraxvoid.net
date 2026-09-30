@@ -117,36 +117,60 @@
     --font-redaction-35: "Redaction 35", "Courier Prime", monospace;
     --font-redaction-100: "Redaction 100", "Courier Prime", monospace;
 
-    --color-desk: #dcdad4;
-    --color-paper: #f7f7f8;
-    --color-surface: #ffffff;
-    --color-ink: #1c1a22;
-    --color-border: #e5e7eb;
-    --color-paper-line: #c9c7bf;
-    --color-secondary: #6b7280;
-    --color-verified: #7c3aed;
-    --color-verified-hover: #5b21b6;
-    --color-flagged: #e0708c;
-    --color-redact: #0f0d13;
-    --color-redpen: #b23a2f;
+    /* Colors are defined once with light-dark(), so they follow
+       `color-scheme`: the browser preference by default (also with JS off),
+       or a forced choice via data-theme on <html> (see src/lib/theme.ts).
+       --color-desk must match THEME_COLORS there (browser chrome color).
+       Text pairs are checked against paper for WCAG AA in both schemes. */
+    --color-desk: light-dark(#dcdad4, #100f14);
+    --color-paper: light-dark(#f7f7f8, #1c1a22);
+    --color-surface: light-dark(#ffffff, #262432);
+    --color-ink: light-dark(#1c1a22, #f2f1f5);
+    --color-border: light-dark(#e5e7eb, #374151);
+    --color-paper-line: light-dark(#c9c7bf, #4b4958);
+    --color-secondary: light-dark(#5a5766, #a9a6b6);
+    --color-verified: light-dark(#6d28d9, #c4b5fd);
+    --color-verified-hover: light-dark(#5b21b6, #ddd6fe);
+    --color-on-verified: light-dark(#ffffff, #1c1a22);
+    --color-flagged: light-dark(#b0345c, #f28fab);
+    --color-redact: light-dark(#0f0d13, #06050a);
+    --color-redact-edge: light-dark(#0f0d13, #57546a);
+    --color-redpen: light-dark(#b23a2f, #ff8f80);
+    --color-focus: light-dark(#6d28d9, #ffd479);
+    --color-shadow: light-dark(rgb(15 13 19 / 0.07), rgb(0 0 0 / 0.5));
 }
 
-/* Plain custom-property overrides, not @theme: @theme registers the
-   token/utility once at build time and does not scope correctly inside
-   a media query, so nesting it here silently applied the dark values
-   unconditionally (caught by a failing color-contrast a11y test). */
-@media (prefers-color-scheme: dark) {
-    :root {
-        --color-desk: #14131a;
-        --color-paper: #1c1a22;
-        --color-surface: #252330;
-        --color-ink: #ffffff;
-        --color-border: #374151;
-        --color-paper-line: #4b4958;
-        --color-secondary: #9ca3af;
-        --color-verified: #c4b5fd;
-        --color-verified-hover: #ddd6fe;
+:root {
+    color-scheme: light dark;
+}
+
+:root[data-theme="light"] {
+    color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+}
+
+/* The paper sheet every page sits on: dotted grain plus a stacked drop
+   shadow, all theme-aware via tokens. */
+@layer components {
+    .sheet {
+        background-color: var(--color-paper);
+        background-image: radial-gradient(
+            circle,
+            color-mix(in oklab, var(--color-ink) 4%, transparent) 1px,
+            transparent 1px
+        );
+        background-size: 6px 6px;
+        box-shadow: 6px 6px 0 var(--color-shadow), 12px 12px 0 color-mix(in oklab, var(--color-shadow) 50%, transparent);
+        color: var(--color-ink);
     }
+}
+
+:focus-visible {
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
 }
 
 body {

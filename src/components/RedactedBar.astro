@@ -14,7 +14,7 @@ const charWidth = 7; // px per character at this bar height, tuned by eye
         wordLengths.map((len) => (
             <span
                 class="inline-block h-4"
-                style={`width: ${len * charWidth}px; background: var(--color-redact);`}
+                style={`width: ${len * charWidth}px; background: var(--color-redact); box-shadow: 0 0 0 1px var(--color-redact-edge);`}
             />
         ))
     }

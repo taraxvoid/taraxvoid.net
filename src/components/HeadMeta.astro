@@ -1,0 +1,26 @@
+---
+import { THEME_COLORS, THEME_STORAGE_KEY } from '../lib/theme';
+---
+
+<meta name="color-scheme" content="light dark" />
+<meta name="theme-color" content={THEME_COLORS.light} media="(prefers-color-scheme: light)" data-scheme="light" />
+<meta name="theme-color" content={THEME_COLORS.dark} media="(prefers-color-scheme: dark)" data-scheme="dark" />
+{/*
+  Blocking on purpose: applies a stored light/dark choice before first paint
+  so there is no flash. Mirrors readStoredPreference/applyPreference in
+  src/lib/theme.ts, which the toggle and theme-client.ts use after load.
+*/}
+<script is:inline define:vars={{ key: THEME_STORAGE_KEY, colors: THEME_COLORS }}>
+    try {
+        var t = localStorage.getItem(key);
+        if (t === 'light' || t === 'dark') {
+            document.documentElement.setAttribute('data-theme', t);
+            document.querySelectorAll('meta[name="theme-color"]').forEach(function (m) {
+                m.setAttribute('content', colors[t]);
+            });
+        }
+    } catch (e) {}
+</script>
+<script>
+    import '../lib/theme-client';
+</script>

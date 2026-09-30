@@ -1,0 +1,101 @@
+---
+const options = [
+    { value: 'system', label: 'System' },
+    { value: 'light', label: 'Light' },
+    { value: 'dark', label: 'Dark' }
+];
+---
+
+{
+    /* Hidden until the script runs: without JS a dead control would be worse
+    than none, and the site already follows the browser preference. */
+}
+<fieldset class="theme-toggle font-mono text-xs" data-theme-toggle hidden>
+    <legend>Color theme</legend>
+    {
+        options.map((o) => (
+            <label>
+                <input type="radio" name="theme" value={o.value} />
+                {o.label}
+            </label>
+        ))
+    }
+</fieldset>
+
+<style>
+    .theme-toggle {
+        border: 0;
+        margin: 0;
+        padding: 0;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .theme-toggle[hidden] {
+        display: none;
+    }
+    .theme-toggle legend {
+        /* Visually hidden but announced. */
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+    .theme-toggle label {
+        position: relative;
+        display: inline-block;
+        padding: 0.25rem 0.6rem;
+        border: 1px solid var(--color-ink);
+        color: var(--color-ink);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        cursor: pointer;
+    }
+    .theme-toggle input {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        margin: 0;
+        cursor: pointer;
+    }
+    .theme-toggle label:has(input:checked) {
+        background: var(--color-ink);
+        color: var(--color-paper);
+    }
+    .theme-toggle label:has(input:focus-visible) {
+        outline: 3px solid var(--color-focus);
+        outline-offset: 2px;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+        .theme-toggle label {
+            transition:
+                background-color 0.15s,
+                color 0.15s;
+        }
+    }
+</style>
+
+<script>
+    import { applyPreference, parsePreference, readStoredPreference, writeStoredPreference } from '../lib/theme';
+    import { safeStorage, syncThemeColor } from '../lib/theme-client';
+
+    // The toggle is replaced on every ClientRouter navigation, so wire it up
+    // on each page load rather than once.
+    document.addEventListener('astro:page-load', () => {
+        const toggle = document.querySelector<HTMLFieldSetElement>('[data-theme-toggle]');
+        if (!toggle) return;
+        const current = readStoredPreference(safeStorage());
+        for (const input of toggle.querySelectorAll<HTMLInputElement>('input[name="theme"]')) {
+            input.checked = input.value === current;
+        }
+        toggle.hidden = false;
+        toggle.addEventListener('change', (event) => {
+            const preference = parsePreference((event.target as HTMLInputElement).value);
+            applyPreference(document.documentElement, preference);
+            writeStoredPreference(safeStorage(), preference);
+            syncThemeColor(preference);
+        });
+    });
+</script>
