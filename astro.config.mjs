@@ -18,6 +18,7 @@ try {
 export default defineConfig({
     site: 'https://taraxvoid.net',
     output: 'static',
+    prefetch: { prefetchAll: true, defaultStrategy: 'viewport' },
     vite: {
         define: { __GIT_REV__: JSON.stringify(gitRev) },
         plugins: [tailwindcss()],

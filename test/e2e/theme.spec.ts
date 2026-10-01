@@ -78,13 +78,13 @@ test.describe('explicit choice', () => {
         const colors = await page
             .locator('meta[name="theme-color"]')
             .evaluateAll((els) => els.map((e) => e.getAttribute('content')));
-        expect(colors).toEqual(['#100f14', '#100f14']);
+        expect(colors).toEqual(['#2b2935', '#2b2935']);
 
         await toggle(page).click();
         const restored = await page
             .locator('meta[name="theme-color"]')
             .evaluateAll((els) => els.map((e) => e.getAttribute('content')));
-        expect(restored).toEqual(['#dcdad4', '#100f14']);
+        expect(restored).toEqual(['#dcdad4', '#2b2935']);
     });
 });
 

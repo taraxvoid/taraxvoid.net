@@ -4,24 +4,30 @@ import Footer from '../components/Footer.astro';
 import Masthead from '../components/Masthead.astro';
 import { coreSkills, education, experience, location, summary } from '../data/resume';
 import Layout from '../layouts/Layout.astro';
+
+// Suggested save-as name, stamped at build time so a downloaded copy is
+// identifiable on disk (the site is static, so this is the generation date).
+const stamp = new Date().toISOString().slice(0, 10);
+const downloadName = (ext: string) => `resume_Tara-X-Void-${stamp}.${ext}`;
 ---
 
 <Layout title="Resume - Tara \X/ Void" description={summary}>
     <div class="min-h-screen bg-desk p-8 sm:p-14">
         <div
-            transition:name="sheet" class="sheet mx-auto max-w-[1296px] px-6 py-11 sm:px-[72px]"
+            transition:name="sheet" class="sheet mx-auto max-w-[900px] px-6 py-11 sm:px-14"
         >
             <Masthead active="resume" />
 
-            <main transition:name="content" class="max-w-[900px]">
+            <main transition:name="content" class="py-9">
             <h1 class="sr-only">Resume</h1>
-            <div class="flex flex-col gap-3 py-7">
+            <h2 class="border-t pb-1 pt-5 text-[15px] font-bold" style="border-color: var(--color-ink);">Resume</h2>
+            <div class="flex flex-col gap-3 border-t border-dashed pb-7 pt-[18px]" style="border-color: var(--color-paper-line);">
                 <DossierRow label="Based">
                     <span class="text-[15px]">{location}</span>
                 </DossierRow>
-                <!-- TODO: generate resume.pdf from this same data and link it here -->
                 <div class="flex gap-4 pt-2 text-sm">
-                    <a href="/resume.md" download>Download .md</a>
+                    <a href="/resume.pdf" download={downloadName('pdf')}>Download .pdf</a>
+                    <a href="/resume.md" download={downloadName('md')}>Download .md</a>
                 </div>
             </div>
 

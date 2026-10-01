@@ -116,6 +116,7 @@
     --font-redaction: "Redaction", "Spectral", serif;
     --font-redaction-20: "Redaction 20", "Courier Prime", monospace;
     --font-redaction-35: "Redaction 35", "Courier Prime", monospace;
+    --font-redaction-50: "Redaction 50", "Courier Prime", monospace;
     --font-redaction-100: "Redaction 100", "Courier Prime", monospace;
 
     /* Colors are defined once with light-dark(), so they follow
@@ -123,14 +124,14 @@
        or a forced choice via data-theme on <html> (see src/lib/theme.ts).
        --color-desk must match THEME_COLORS there (browser chrome color).
        Text pairs are checked against paper for WCAG AA in both schemes. */
-    --color-desk: light-dark(#dcdad4, #100f14);
-    --color-paper: light-dark(#f7f7f8, #1c1a22);
-    --color-surface: light-dark(#ffffff, #262432);
-    --color-ink: light-dark(#1c1a22, #f2f1f5);
+    --color-desk: light-dark(#dcdad4, #2b2935);
+    --color-paper: light-dark(#f7f7f8, #3a3747);
+    --color-surface: light-dark(#ffffff, #46435a);
+    --color-ink: light-dark(#1c1a22, #f7f6fa);
     --color-border: light-dark(#e5e7eb, #374151);
-    --color-paper-line: light-dark(#c9c7bf, #4b4958);
-    --color-secondary: light-dark(#5a5766, #a9a6b6);
-    --color-verified: light-dark(#6d28d9, #c4b5fd);
+    --color-paper-line: light-dark(#c9c7bf, #6a667c);
+    --color-secondary: light-dark(#5a5766, #c3c0d0);
+    --color-verified: light-dark(#6d28d9, #d4c8ff);
     --color-verified-hover: light-dark(#5b21b6, #ddd6fe);
     --color-on-verified: light-dark(#ffffff, #1c1a22);
     --color-flagged: light-dark(#b0345c, #f28fab);
@@ -197,16 +198,13 @@ a:hover {
     }
 }
 
-/* The paper frame keeps one width on every page, and snaps to the next
-   page's height instead of morphing (the morph read as the page resizing).
-   Only the content inside it crossfades. */
-::view-transition-group(sheet),
-::view-transition-group(content) {
+/* Pages swap instantly: the default crossfade read as lag. The paper frame
+   keeps one width on every page and snaps to the next page's height. */
+::view-transition-group(*),
+::view-transition-old(*),
+::view-transition-new(*) {
     animation: none;
 }
 ::view-transition-old(sheet) {
     display: none;
-}
-::view-transition-new(sheet) {
-    animation: none;
 }

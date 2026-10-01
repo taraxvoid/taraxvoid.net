@@ -17,9 +17,10 @@
         "format": "biome check --write .",
         "test": "bun run build && npm-run-all -l -p check test:unit -s test:e2e:full",
         "test:unit": "vitest run",
-        "test:e2e:full": "playwright test --project=mobile-chrome",
+        "test:e2e:full": "playwright test --project=mobile-chrome --project=desktop-chrome",
         "test:e2e:a11y": "playwright test --project=a11y",
         "prepare": "husky",
+        "resume:pdf": "bun scripts/resume-pdf.ts",
         "lint:actions": "./scripts/lint-actions.sh",
         "audit": "bun audit --audit-level high --production"
     },

@@ -58,7 +58,7 @@ export function resolveTheme(preference: ThemePreference, prefersDark: boolean):
 // Browser chrome colors. Keep in sync with --color-desk (the body background) in src/styles/global.css.
 export const THEME_COLORS: Record<ResolvedTheme, string> = {
     light: '#dcdad4',
-    dark: '#100f14'
+    dark: '#2b2935'
 };
 
 // Each <meta name="theme-color"> is tagged with the scheme it serves via a

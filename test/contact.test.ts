@@ -22,9 +22,26 @@ describe('parseContact', () => {
         expect(parseContact(form({ website: 'x' })).kind).toBe('bot');
     });
 
+    it('keeps an optional reply-to email when valid', () => {
+        expect(parseContact(form({ ...valid, email: '  me@example.com ' }))).toEqual({
+            kind: 'ok',
+            data: { message: 'hello', email: 'me@example.com' }
+        });
+    });
+
+    it('treats a blank email as absent', () => {
+        expect(parseContact(form({ ...valid, email: '  ' }))).toEqual({
+            kind: 'ok',
+            data: { message: 'hello' }
+        });
+    });
+
     it.each([
         ['empty message', { message: '   ' }],
-        ['oversized message', { message: 'x'.repeat(141) }]
+        ['oversized message', { message: 'x'.repeat(141) }],
+        ['email without @', { email: 'nope' }],
+        ['email with whitespace', { email: 'a b@example.com' }],
+        ['oversized email', { email: `${'x'.repeat(250)}@e.co` }]
     ])('rejects %s', (_label, override) => {
         expect(parseContact(form({ ...valid, ...override })).kind).toBe('invalid');
     });
@@ -42,6 +59,12 @@ describe('buildEmail', () => {
         expect(email.from).toBe('contact@taraxvoid.net');
         expect(email.to).toEqual(['inbox@example.com']);
         expect(email.text).toBe('hi');
+        expect(email).not.toHaveProperty('reply_to');
+    });
+
+    it('sets reply_to when the sender left an email', () => {
+        const email = buildEmail({ message: 'hi', email: 'me@example.com' }, 'a@b.co', 'c@d.co');
+        expect(email.reply_to).toBe('me@example.com');
     });
 });
 
