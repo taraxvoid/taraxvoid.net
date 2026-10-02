@@ -14,13 +14,20 @@ permissions:
 
 jobs:
   validate:
-    uses: taraxvoid/voidflow/.github/workflows/site-ci.yml@v0.5.1
+    uses: taraxvoid/voidflow/.github/workflows/site-ci.yml@b43fc0d3fb8077fc5a25449dd9ebd716ee1eb604 # v0.11.1
+    with:
+      single-environment: true
+
+  resolve-env:
+    uses: taraxvoid/voidflow/.github/workflows/resolve-env.yml@cc14d77befdb4532e8ba448d37b0f4087ca99e1d # main after voidflow#118; next release (0.11.2) includes it
+    with:
+      single-environment: true
 
   deploy:
-    name: Deploy
-    needs: [validate]
+    name: Deploy [${{ needs.resolve-env.outputs.env }}]
+    needs: [validate, resolve-env]
     if: github.event_name == 'push'
-    environment: prod
+    environment: ${{ needs.resolve-env.outputs.env }}
     runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
@@ -37,9 +44,9 @@ jobs:
         run: bun run build
 
       - name: Deploy
-        uses: taraxvoid/voidflow/actions/cloudflare-deploy@v0.5.1
+        uses: taraxvoid/voidflow/actions/cloudflare-deploy@b43fc0d3fb8077fc5a25449dd9ebd716ee1eb604 # v0.11.1
         with:
-          env: prod
+          env: ${{ needs.resolve-env.outputs.env }}
           cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           cloudflare-account-id: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
           command: deploy
