@@ -50,8 +50,5 @@
         "typescript": "^5.9.3",
         "vitest": "^3.2.7",
         "wrangler": "^4.144.0"
-    },
-    "volta": {
-        "node": "24.21.0"
     }
 }
