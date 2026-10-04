@@ -7,7 +7,7 @@
 export const summary =
     "Platform / DevEx / DevSecOps engineer with 15 years across security engineering, threat intelligence, and production operations at MITRE, Salesforce, Datadog, and Yahoo, plus a Director-level security role at Tile. Since 2026 I've run RavenFlight Industries, where I design, ship, and operate the whole stack solo.";
 
-export const location = 'Omaha, NE / Hayward, CA (remote-friendly)';
+export const location = 'Hayward, CA (remote-friendly)';
 
 export interface ExperienceEntry {
     org: string;
@@ -22,7 +22,7 @@ export const experience: ExperienceEntry[] = [
         org: 'RavenFlight Industries, LLC',
         role: 'Founder & Principal Engineer (Platform, DevEx, Security)',
         dates: 'Apr 2026 - present',
-        location: 'Omaha, NE',
+        location: 'Hayward, CA',
         highlights: [
             'Bun/TypeScript monorepo (Hono API, Astro admin dashboard, Zod schemas, Drizzle + D1) running entirely on Cloudflare Workers, Workflows, D1, R2, KV and Durable Objects.',
             'Astro + React islands + Tailwind v4 marketing site with live audits, KV-backed rate limiting, and a rehearsed rollback/roll-forward drill on every staging deploy.',
