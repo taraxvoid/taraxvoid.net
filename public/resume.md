@@ -1,6 +1,6 @@
 # Tara \X/ Void
 
-Omaha, NE / Hayward, CA (remote-friendly)
+Hayward, CA (remote-friendly)
 
 ## Summary
 
@@ -19,12 +19,12 @@ Platform / DevEx / DevSecOps engineer with 15 years across security engineering,
 
 ### RavenFlight Industries, LLC
 
-Apr 2026 - present, Omaha, NE
+Apr 2026 - present, Hayward, CA
 Founder & Principal Engineer (Platform, DevEx, Security)
 
 - Bun/TypeScript monorepo (Hono API, Astro admin dashboard, Zod schemas, Drizzle + D1) running entirely on Cloudflare Workers, Workflows, D1, R2, KV and Durable Objects.
 - Astro + React islands + Tailwind v4 marketing site with live audits, KV-backed rate limiting, and a rehearsed rollback/roll-forward drill on every staging deploy.
-- Five reusable GitHub Actions workflows and three composite actions consumed by four production sites, hardened with actionlint, zizmor, and ShellCheck.
+- Two reusable GitHub Actions workflows and three composite actions running CI/CD for five production sites, hardened with actionlint, zizmor, and ShellCheck.
 - Scale-to-zero self-hosted GitHub Actions runner pool with zero public ingress, SOPS + age secrets, and single-use OAuth join tokens.
 
 ### Lindsay Corporation
@@ -49,6 +49,15 @@ Feb 2019 - Jan 2022, San Francisco Bay Area
 Senior Security Engineer (Threat Intelligence)
 
 - Built and owned DevOps for a production threat-intelligence platform on AWS: Python, Redis, DynamoDB, Kafka, Celery / RabbitMQ, Lambda.
+
+### Yahoo / Verizon Media
+
+Jan 2018 - Nov 2018, San Francisco Bay Area
+Senior Security Engineer (Advanced Threats)
+
+- Investigated and mitigated e-crime and nation-state (APT) intrusions, platform abuse, and account-takeover campaigns.
+- Owned and operated full-stack production services on AWS: Python, Django, jQuery, Redis, Celery / RabbitMQ, Postgres, Hadoop.
+- Produced threat intelligence for vetted industry trust groups.
 
 ### Tile, Inc
 

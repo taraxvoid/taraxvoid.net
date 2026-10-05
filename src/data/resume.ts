@@ -26,7 +26,7 @@ export const experience: ExperienceEntry[] = [
         highlights: [
             'Bun/TypeScript monorepo (Hono API, Astro admin dashboard, Zod schemas, Drizzle + D1) running entirely on Cloudflare Workers, Workflows, D1, R2, KV and Durable Objects.',
             'Astro + React islands + Tailwind v4 marketing site with live audits, KV-backed rate limiting, and a rehearsed rollback/roll-forward drill on every staging deploy.',
-            'Five reusable GitHub Actions workflows and three composite actions consumed by four production sites, hardened with actionlint, zizmor, and ShellCheck.',
+            'Two reusable GitHub Actions workflows and three composite actions running CI/CD for five production sites, hardened with actionlint, zizmor, and ShellCheck.',
             'Scale-to-zero self-hosted GitHub Actions runner pool with zero public ingress, SOPS + age secrets, and single-use OAuth join tokens.'
         ]
     },
@@ -57,6 +57,17 @@ export const experience: ExperienceEntry[] = [
         location: 'San Francisco Bay Area',
         highlights: [
             'Built and owned DevOps for a production threat-intelligence platform on AWS: Python, Redis, DynamoDB, Kafka, Celery / RabbitMQ, Lambda.'
+        ]
+    },
+    {
+        org: 'Yahoo / Verizon Media',
+        role: 'Senior Security Engineer (Advanced Threats)',
+        dates: 'Jan 2018 - Nov 2018',
+        location: 'San Francisco Bay Area',
+        highlights: [
+            'Investigated and mitigated e-crime and nation-state (APT) intrusions, platform abuse, and account-takeover campaigns.',
+            'Owned and operated full-stack production services on AWS: Python, Django, jQuery, Redis, Celery / RabbitMQ, Postgres, Hadoop.',
+            'Produced threat intelligence for vetted industry trust groups.'
         ]
     },
     {
