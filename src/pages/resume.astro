@@ -2,7 +2,7 @@
 import DossierRow from '../components/DossierRow.astro';
 import Footer from '../components/Footer.astro';
 import Masthead from '../components/Masthead.astro';
-import { coreSkills, education, experience, location, summary } from '../data/resume';
+import { coreSkills, education, experience, location, openSource, summary } from '../data/resume';
 import Layout from '../layouts/Layout.astro';
 
 // Suggested save-as name, stamped at build time so a downloaded copy is
@@ -65,6 +65,13 @@ const downloadName = (ext: string) => `resume_Tara-X-Void-${stamp}.${ext}`;
                     ))
                 }
                 <div class="border-t" style="border-color: var(--color-ink);"></div>
+            </div>
+
+            <div class="border-t pt-5" style="border-color: var(--color-ink);">
+                <h2 class="pb-3 text-[15px] font-bold">Open source</h2>
+                <ul class="flex flex-col gap-1.5 pb-8 text-[15px] leading-relaxed">
+                    {openSource.map((item) => <li>{item}</li>)}
+                </ul>
             </div>
 
             <div class="border-t pt-5" style="border-color: var(--color-ink);">

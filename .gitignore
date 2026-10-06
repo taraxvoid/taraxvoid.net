@@ -51,3 +51,7 @@ npm-debug.log*
 
 # TypeScript
 *.tsbuildinfo
+
+# Generated resume PDF (bun run resume:pdf) and the pinned typst download
+public/resume.pdf
+.cache/
