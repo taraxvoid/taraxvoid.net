@@ -9,7 +9,7 @@ export const name = 'Tara \\X/ Void';
 export const summary =
     'Platform engineer working on developer experience and security: CI/CD, supply-chain controls and paved roads for developers and coding agents. 15 years across product security, threat intelligence and production operations at Datadog, Salesforce, Yahoo, Tile and MITRE. Founder of RavenFlight, an AI-assisted conversion-audit product.';
 
-export const location = 'Hayward, CA (remote-friendly)';
+export const location = 'Omaha, NE / Hayward, CA (remote-friendly)';
 
 export interface ExperienceEntry {
     org: string;
@@ -24,7 +24,7 @@ export const experience: ExperienceEntry[] = [
         org: 'RavenFlight Industries, LLC',
         role: 'Founder & Principal Engineer (Platform, DevEx, Security)',
         dates: 'Apr 2026 - present',
-        location: 'Hayward, CA',
+        location: 'Omaha,NE / Hayward, CA',
         highlights: [
             'Maintain voidflow, open-source shared CI/CD for my production sites: reusable workflows and composite actions with SHA-pinned dependencies, zizmor, actionlint and gitleaks gates, accessibility and performance budgets, license policy, release channels, and branch rulesets as code.',
             'Built an AI-assisted conversion-audit product on Cloudflare Workers, D1, Workflows and Containers (Hono, Astro, Zod, Drizzle). All LLM calls go through one boundary that tags customer, feature and request for cost telemetry and provider fallback.',
