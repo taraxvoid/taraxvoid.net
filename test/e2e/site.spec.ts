@@ -44,3 +44,23 @@ test('the resume page offers a pdf download', async ({ page }) => {
     expect(response.status()).toBe(200);
     expect(response.headers()['content-type']).toContain('pdf');
 });
+
+// iPhone 16 (393), Pixel 9 (412), Pixel 10 (412), plus a small-phone floor
+for (const width of [360, 393, 412]) {
+    test(`header lockup brackets stay on one row at ${width}px`, async ({ page }) => {
+        await page.setViewportSize({ width, height: 852 });
+        await page.goto('/');
+        const parts = page.locator('a.masthead-lockup > *');
+        const boxes = await parts.evaluateAll((els) =>
+            els.map((e) => {
+                const r = e.getBoundingClientRect();
+                return { top: r.top, bottom: r.bottom, right: r.right };
+            })
+        );
+        const firstTop = boxes[0].top;
+        for (const b of boxes) expect(Math.abs(b.top - firstTop)).toBeLessThan(40);
+        expect(boxes.at(-1)!.right).toBeLessThanOrEqual(width);
+        const overflow = await page.evaluate(() => document.scrollingElement!.scrollWidth > window.innerWidth);
+        expect(overflow).toBe(false);
+    });
+}
