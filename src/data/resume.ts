@@ -28,8 +28,8 @@ export const experience: ExperienceEntry[] = [
         highlights: [
             'Open-sourced personal Internal Developer Platform: reusable CI/CD workflows with shift-left Security, Accessibility and Performance defined in code.',
             'Built and operated RavenFlight: agent-native CRO product. Sandboxed model calls with cost telemetry, cross-review, human gating and provider fallback.',
-            'Guardrails-by-default to enable secure and cost-contained agentic development.',
-            'Extensive experience security-first development on Azure, AWS, Terraform, Ansible, agent-native development and CI/CD in hyperscale environments'
+            'Implemented guardrails to enable secure and cost-contained agentic development.',
+            'Extensive experience implementing security-first Developer Experience and DevSecOps in enterprise and hyperscale environments'
         ]
     },
     {
@@ -39,7 +39,8 @@ export const experience: ExperienceEntry[] = [
         location: 'Omaha, NE',
         highlights: [
             'Platform Engineering and DevOps for business-critical product teams - web and mobile apps',
-            'Used GitLab CI/CD on Azure with internal runners and containers / k8s infrastructure with deploy gates and rollback',
+            'Production deployments in C#, .NET on Azure with k8s infrastructure',
+            'Built out GitLab CI/CD workflows on Azure with custom containerized runners with deploy gates and rollback',
             'Took Staging rebuilds from 6 hours of toil to 5 minutes for a working environment seeded with synthetic data',
             'Brought in agentic development flows (GitHub Copilot, Claude) sandboxed with scoped permissions, spend controls, local hooks and test-driven development.',
             'Implemented QA automation release gates and clean rollback.'
@@ -52,7 +53,7 @@ export const experience: ExperienceEntry[] = [
         location: 'San Francisco Bay Area',
         highlights: [
             'First-class security review and shift-left design for business-critical products.',
-            'Deployed code to production in Go and Python with hyperscale database infra',
+            'Deployed production code in Go and Python with scalable database infra',
             'Cross-cutting impact across product, database, security and infrastructure teams.',
             'Built self-service security review with paved-road reference implementations.'
         ]
