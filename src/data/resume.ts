@@ -26,10 +26,10 @@ export const experience: ExperienceEntry[] = [
         dates: 'Apr 2026 - present',
         location: 'Omaha,NE',
         highlights: [
-            'Open-sourced personal Internal Developer Platform: reusable CI/CD workflows with shift-left Security, Accessibility and Performance defined in code.',
-            'Built and operated RavenFlight: agent-native CRO product. Sandboxed model calls with cost telemetry, cross-review, human gating and provider fallback.',
-            'Implemented guardrails to enable secure and cost-contained agentic development.',
-            'Extensive experience implementing security-first Developer Experience and DevSecOps in enterprise and hyperscale environments'
+            'Extensive experience implementing security-first Developer Experience and DevSecOps in enterprise and hyperscale environments',
+            'Open-sourced a Internal Developer Platform with reusable CI/CD workflows and Security, Accessibility and Performance gates defined in code.',
+            'Built agent-native Conversion Rate Optimization (CRO) product with sandboxed model calls and cost telemetry, cross-review, human gating and provider fallback.',
+            'Fully integrated agentic software development with secure and cost-containment and custom agent personas.'
         ]
     },
     {
