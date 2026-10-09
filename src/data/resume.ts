@@ -52,8 +52,9 @@ export const experience: ExperienceEntry[] = [
         location: 'San Francisco Bay Area',
         highlights: [
             'First-class security review and shift-left design for business-critical products.',
-            'Reviewed designs and code in Go, Python, Kafka, Redis, NoSQL and Postgres with product, database and infrastructure teams.',
-            'Built developer-first security (DevSecOps, shift-left) across product, database, infrastructure and engineering teams: self-serve security review programs, code security and secrets scanning built into local dev and CI, and paved-road secure defaults.'
+            'Deployed code to production in Go and Python with hyperscale database infra',
+            'Cross-cutting impact across product, database, security and infrastructure teams.',
+            'Built self-service security review with paved-road reference implementations.'
         ]
     },
     {
@@ -62,8 +63,8 @@ export const experience: ExperienceEntry[] = [
         dates: 'Feb 2019 - Jan 2022',
         location: 'San Francisco Bay Area',
         highlights: [
-            "Built and ran the threat-intelligence team's data pipeline in production on AWS: Python, Kafka, Redis, Celery / RabbitMQ, DynamoDB, Lambda.",
-            'Encryption key management with AWS KMS.'
+            'Built threat intelligence platform on AWS with Python, Kafka, Redis, Celery / RabbitMQ, DynamoDB, Lambda Functions.',
+            'Cross-vertical abuse mitigation and internal security response for product teams (CRM, Heroku, Slack)'
         ]
     },
     {
