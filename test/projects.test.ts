@@ -7,19 +7,25 @@ describe('projects data', () => {
         expect(new Set(refs).size).toBe(refs.length);
     });
 
-    it('requires an href and link label on every public entry', () => {
+    it('gives every entry with an href a link label', () => {
         for (const project of projects) {
-            if (project.visibility === 'public') {
-                expect(project.href, `${project.title} is public but has no href`).toBeTruthy();
-                expect(project.linkLabel, `${project.title} is public but has no linkLabel`).toBeTruthy();
+            if (project.href) {
+                expect(project.linkLabel, `${project.title} has an href but no linkLabel`).toBeTruthy();
             }
         }
     });
 
-    it('never gives a private entry an href', () => {
+    it('gives every entry a site, a repo, or a closed-source flag', () => {
         for (const project of projects) {
-            if (project.visibility === 'private') {
-                expect(project.href, `${project.title} is private but has an href`).toBeUndefined();
+            const reachable = project.href || project.repo || project.closedSource;
+            expect(reachable, `${project.title} has no href, repo, or closedSource flag`).toBeTruthy();
+        }
+    });
+
+    it('never gives a closed-source entry a repo link', () => {
+        for (const project of projects) {
+            if (project.closedSource) {
+                expect(project.repo, `${project.title} is closed source but has a repo`).toBeUndefined();
             }
         }
     });
