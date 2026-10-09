@@ -26,8 +26,8 @@ export const experience: ExperienceEntry[] = [
         dates: 'Apr 2026 - present',
         location: 'Omaha,NE',
         highlights: [
-            'Open-sourced my personal Internal Developer Platform: reusable CI/CD workflows with shift-left Security, Accessibility and Performance defined in code.',
-            'Built RavenFlight: agent-native CRO product. Sandboxed model calls with cost telemetry, cross-review, human gating and provider fallback.',
+            'Open-sourced personal Internal Developer Platform: reusable CI/CD workflows with shift-left Security, Accessibility and Performance defined in code.',
+            'Built and operated RavenFlight: agent-native CRO product. Sandboxed model calls with cost telemetry, cross-review, human gating and provider fallback.',
             'Guardrails-by-default to enable secure and cost-contained agentic development.',
             'Extensive experience security-first development on Azure, AWS, Terraform, Ansible, agent-native development and CI/CD in hyperscale environments'
         ]
