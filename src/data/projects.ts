@@ -26,7 +26,7 @@ export const projects: Project[] = [
             "Community-driven noncommercial resource for Omaha's queer community, using the voidflow pipeline.",
         visibility: 'public',
         href: 'https://queeromaha.net',
-        linkLabel: 'View sites',
+        linkLabel: 'View site',
         annotation: 'shipped'
     },
     {
@@ -35,7 +35,7 @@ export const projects: Project[] = [
         description: 'Omaha experimental music collective ran by Stacey Barelos',
         visibility: 'public',
         href: 'https://soundryomaha.org',
-        linkLabel: 'View sites',
+        linkLabel: 'View site',
         annotation: 'shipped'
     },
     {
@@ -44,7 +44,7 @@ export const projects: Project[] = [
         description: "Omaha's Electronic Music Meetup",
         visibility: 'public',
         href: 'https://soundryomaha.org',
-        linkLabel: 'View sites',
+        linkLabel: 'View site',
         annotation: 'shipped'
     },
     {
