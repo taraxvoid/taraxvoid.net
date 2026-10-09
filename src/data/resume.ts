@@ -9,7 +9,7 @@ export const name = 'Tara \\X/ Void';
 export const summary =
     'Platform engineer working on developer experience and security: CI/CD, supply-chain controls and paved roads for developers and coding agents. 15 years across product security, threat intelligence and production operations at Datadog, Salesforce, Yahoo, Tile and MITRE. Founder of RavenFlight, an AI-assisted conversion-audit product.';
 
-export const location = 'Omaha, NE / Hayward, CA (remote-friendly)';
+export const location = 'Omaha, NE (remote-friendly)';
 
 export interface ExperienceEntry {
     org: string;
@@ -24,12 +24,12 @@ export const experience: ExperienceEntry[] = [
         org: 'RavenFlight Industries, LLC',
         role: 'Founder & Principal Engineer (Platform, DevEx, Security)',
         dates: 'Apr 2026 - present',
-        location: 'Omaha,NE / Hayward, CA',
+        location: 'Omaha,NE',
         highlights: [
-            'Maintain voidflow, open-source shared CI/CD for my production sites: reusable workflows and composite actions with SHA-pinned dependencies, zizmor, actionlint and gitleaks gates, accessibility and performance budgets, license policy, release channels, and branch rulesets as code.',
-            'Built an AI-assisted conversion-audit product on Cloudflare Workers, D1, Workflows and Containers (Hono, Astro, Zod, Drizzle). All LLM calls go through one boundary that tags customer, feature and request for cost telemetry and provider fallback.',
-            'Staging deploys rehearse rollback and roll-forward and verify the served build SHA.',
-            'Wrote agent guidance (CLAUDE.md, REVIEW.md) for each repo; agent-written changes go through the same hooks and CI gates as human ones.'
+            'Open-sourced my personal Internal Developer Platform: reusable CI/CD workflows with shift-left Security, Accessibility and Performance defined in code.',
+            'Built RavenFlight: agent-native CRO product. Sandboxed model calls with cost telemetry, cross-review, human gating and provider fallback.',
+            'Guardrails-by-default to enable secure and cost-contained agentic development.',
+            'Extensive experience security-first development on Azure, AWS, Terraform, Ansible, agent-native development and CI/CD in hyperscale environments'
         ]
     },
     {
@@ -38,12 +38,11 @@ export const experience: ExperienceEntry[] = [
         dates: 'Jan 2025 - Apr 2026',
         location: 'Omaha, NE',
         highlights: [
-            'Platform and DevOps for 7 product teams (about 30 developers) shipping web, Android and iOS apps: hosting and CI/CD on Azure and GitLab, across Windows and Linux. Success was measured in developer productivity.',
-            'Cut staging environment creation from 6 hours of manual work to 20 minutes cold and 5 minutes warm in CI. Environments are built from Terraform, Ansible, Azure resources and Kubernetes, with versioned images that rebuild only changed layers.',
-            "Added per-merge-request dev deployments and CI test environments, seeded with sanitized synthetic data and migrated to the branch's schema.",
-            'Introduced agentic development (GitHub Copilot, Claude) and set up local dev for it: containerized sandboxes with scoped permissions, spend controls, local hooks and a test-first loop.',
-            'Added CI release gates and automatic rollbacks for business-critical systems.',
-            'Built RSpec (Ruby) QA automation for the web app across dev, staging and post-deploy production, run as GitLab CI release gates.'
+            'Platform Engineering and DevOps for business-critical product teams - web and mobile apps',
+            'Used GitLab CI/CD on Azure with internal runners and containers / k8s infrastructure with deploy gates and rollback',
+            'Took Staging rebuilds from 6 hours of toil to 5 minutes for a working environment seeded with synthetic data',
+            'Brought in agentic development flows (GitHub Copilot, Claude) sandboxed with scoped permissions, spend controls, local hooks and test-driven development.',
+            'Implemented QA automation release gates and clean rollback.'
         ]
     },
     {
@@ -52,7 +51,7 @@ export const experience: ExperienceEntry[] = [
         dates: 'Jan 2022 - May 2024',
         location: 'San Francisco Bay Area',
         highlights: [
-            'Security review and secure design for product services carrying billions in revenue.',
+            'First-class security review and shift-left design for business-critical products.',
             'Reviewed designs and code in Go, Python, Kafka, Redis, NoSQL and Postgres with product, database and infrastructure teams.',
             'Built developer-first security (DevSecOps, shift-left) across product, database, infrastructure and engineering teams: self-serve security review programs, code security and secrets scanning built into local dev and CI, and paved-road secure defaults.'
         ]
