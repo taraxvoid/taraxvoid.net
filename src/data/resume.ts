@@ -7,7 +7,7 @@
 export const name = 'Tara \\X/ Void';
 
 export const summary =
-    'Platform engineer working on developer experience and security: CI/CD, supply-chain controls and paved roads for developers and coding agents. 15 years across product security, threat intelligence and production operations at Datadog, Salesforce, Yahoo, Tile and MITRE. Founder of RavenFlight, an AI-assisted conversion-audit product.';
+    'Platform engineer working on developer experience and security: CI/CD, supply-chain controls and paved roads for developers and coding agents. 15 years across product security, threat intelligence and production operations at Datadog, Salesforce, Yahoo, Tile and MITRE. Builds voidsuite, an open-source internal developer platform for CI/CD, delivery metrics and coding-agent guardrails.';
 
 export const location = 'Omaha, NE (remote-friendly)';
 
@@ -24,12 +24,11 @@ export const experience: ExperienceEntry[] = [
         org: 'RavenFlight Industries, LLC',
         role: 'Founder & Principal Engineer (Platform, DevEx, Security)',
         dates: 'Apr 2026 - present',
-        location: 'Omaha,NE',
+        location: 'Omaha, NE',
         highlights: [
-            'Extensive experience implementing security-first Developer Experience and DevSecOps in enterprise and hyperscale environments',
-            'Open-sourced a Internal Developer Platform with reusable CI/CD workflows and Security, Accessibility and Performance gates defined in code.',
-            'Built agent-native Conversion Rate Optimization (CRO) product with sandboxed model calls and cost telemetry, cross-review, human gating and provider fallback.',
-            'Fully integrated agentic software development with secure and cost-containment and custom agent personas.'
+            'Built and open-sourced voidsuite, an internal developer platform: shared CI/CD with security, accessibility and performance gates as code (voidflow), DORA and uptime metrics (voidlight) and a site template (voidsite), running 5 production sites.',
+            'Built an agent-native conversion rate optimization (CRO) product with sandboxed model calls, cost telemetry, cross-model review, human gating and provider fallback.',
+            'Run coding agents in capability tiers with guardrails as code (rookery): read-only agents in an OS sandbox, a safe-git allowlist, per-tier spend limits and dispatch that issue text cannot steer.'
         ]
     },
     {
@@ -132,7 +131,8 @@ export const coreSkills = [
 
 export const openSource = [
     '18xx.games (tobymao/18xx, Ruby): 321 commits from 2020 to 2023, among the top 15 contributors by commit count. Engine and rules fixes across about 46 game titles, UI changes, and the project PR and issue templates.',
-    'voidflow (MIT): shared CI/CD for my production sites, published to npm and JSR with provenance.'
+    'voidflow (MIT): shared CI/CD for my production sites, published to npm and JSR with provenance.',
+    'rookery (MIT): tiered coding-agent personas with guardrails enforced as code.'
 ];
 
 export const education = {

@@ -5,13 +5,12 @@ import Footer from '../components/Footer.astro';
 import Masthead from '../components/Masthead.astro';
 import ProjectSections from '../components/ProjectSections.astro';
 import RedactedBar from '../components/RedactedBar.astro';
-import Spoiler from '../components/Spoiler.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout
     title="Tara \X/ Void"
-    description="Platform, DevEx, and security engineer. Founder / Principal Engineer at RavenFlight Industries."
+    description="Platform, DevEx and security engineer in Omaha: CI/CD, supply-chain security and guardrails for coding agents."
 >
     <div class="min-h-screen bg-desk p-8 sm:p-14">
         <div
@@ -39,21 +38,20 @@ import Layout from '../layouts/Layout.astro';
                     </DossierRow>
 
                     <DossierRow label="Role" emphasis>
-                        <span class="font-redaction-35 text-[15px] italic tracking-wide">Founder / Principal Engineer</span>
+                        <span class="font-redaction-35 text-[15px] italic tracking-wide">Platform, DevEx &amp; Security Engineer</span>
                     </DossierRow>
 
-                    <DossierRow label="Employer" emphasis>
-                        <Spoiler label="Employer (spoiler, activate to reveal)">
+                    <DossierRow label="Currently" emphasis>
+                        <span class="font-redaction-35 text-[15px] tracking-wide">
+                            Principal Engineer,
                             <a
                                 href="https://ravenflight.io"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                class="inline-flex items-baseline gap-px font-redaction-20 text-[20px] tracking-wide underline"
-                                style="color: var(--color-ink);"
+                                class="underline"
+                                style="color: var(--color-ink);">RavenFlight</a
                             >
-                                <span aria-hidden="true">[</span>RavenFlight<span aria-hidden="true">]</span>
-                            </a>
-                        </Spoiler>
+                        </span>
                     </DossierRow>
 
                     <hr class="border-0 border-t border-dashed" style="border-color: var(--color-paper-line);" />

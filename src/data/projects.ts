@@ -20,6 +20,13 @@ export const projects: Project[] = [
     },
     {
         group: 'open-source',
+        title: 'Rookery',
+        description:
+            'Coding agents in capability tiers with guardrails enforced as code: sandboxed read-only agents, a safe-git allowlist and per-tier spend limits.',
+        repo: 'https://github.com/taraxvoid/rookery'
+    },
+    {
+        group: 'open-source',
         title: 'QueerOmaha.net',
         description: "Community-driven noncommercial resource for Omaha's queer community.",
         href: 'https://queeromaha.net',
@@ -48,15 +55,17 @@ export const projects: Project[] = [
     {
         group: 'professional',
         title: 'RavenFlight.io',
-        description: 'RavenFlight Frontend / Dashboard with analytics-based dogfooding and continuous roll-forwards.',
+        description:
+            'Marketing site and customer dashboard, deployed by continuous roll-forward and measured with its own product analytics.',
         closedSource: true,
         href: 'https://ravenflight.io',
         linkLabel: 'Website'
     },
     {
         group: 'professional',
-        title: "RavenFlight's API/Product",
-        description: 'Agentic CRO SaaS product on Typescript monorepo with model cost telemetry and sandboxing.',
+        title: 'RavenFlight API',
+        description:
+            'Agentic conversion-rate-optimization (CRO) product: a TypeScript monorepo with sandboxed model calls and cost telemetry.',
         closedSource: true
     }
 ];
