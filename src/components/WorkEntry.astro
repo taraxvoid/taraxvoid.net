@@ -6,14 +6,13 @@ interface Props {
 }
 
 const { project } = Astro.props;
-const spineColor = project.href || project.repo ? 'var(--color-verified)' : 'var(--color-paper-line)';
+const spineColor = project.group === 'professional' ? 'var(--color-bar-pro)' : 'var(--color-bar-oss)';
 ---
 
 <div class="flex gap-4 border-t border-dashed py-[18px]" style="border-color: var(--color-paper-line);">
     <div class="w-1 flex-shrink-0" style={`background: ${spineColor};`}></div>
     <div class="max-w-[560px] flex-1">
         <div class="flex items-baseline gap-2.5">
-            <span class="font-mono text-[11px]" style="color: var(--color-secondary);">{project.ref}</span>
             <span class="text-[17px] font-bold">{project.title}</span>
         </div>
         <p class="pt-1 text-[15px] leading-relaxed">{project.description}</p>

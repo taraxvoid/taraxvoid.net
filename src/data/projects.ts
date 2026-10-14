@@ -1,5 +1,5 @@
 export interface Project {
-    ref: string;
+    group: 'open-source' | 'professional';
     title: string;
     description: string;
     href?: string;
@@ -11,7 +11,7 @@ export interface Project {
 
 export const projects: Project[] = [
     {
-        ref: 'TXV-01',
+        group: 'open-source',
         title: 'Voidflow',
         description:
             'Open-source CI/CD workflows with security, accessibility, performance and license gating. Used across my sites.',
@@ -19,7 +19,7 @@ export const projects: Project[] = [
         repo: 'https://github.com/taraxvoid/voidflow'
     },
     {
-        ref: 'TXV-02',
+        group: 'open-source',
         title: 'QueerOmaha.net',
         description: "Community-driven noncommercial resource for Omaha's queer community.",
         href: 'https://queeromaha.net',
@@ -28,7 +28,7 @@ export const projects: Project[] = [
         repo: 'https://github.com/taraxvoid/queeromaha'
     },
     {
-        ref: 'TXV-03',
+        group: 'open-source',
         title: 'SoundryOmaha.org',
         description: 'Omaha experimental music collective ran by Stacey Barelos',
         href: 'https://soundryomaha.org',
@@ -37,7 +37,7 @@ export const projects: Project[] = [
         repo: 'https://github.com/taraxvoid/soundry'
     },
     {
-        ref: 'TXV-04',
+        group: 'open-source',
         title: 'SynthOmaha.net',
         description: "Omaha's Electronic Music Meetup",
         href: 'https://synthomaha.net',
@@ -46,7 +46,7 @@ export const projects: Project[] = [
         repo: 'https://github.com/taraxvoid/synthomaha'
     },
     {
-        ref: 'RVN-01',
+        group: 'professional',
         title: 'RavenFlight.io',
         description: 'RavenFlight Frontend / Dashboard with analytics-based dogfooding and continuous roll-forwards.',
         closedSource: true,
@@ -54,7 +54,7 @@ export const projects: Project[] = [
         linkLabel: 'Website'
     },
     {
-        ref: 'RVN-02',
+        group: 'professional',
         title: "RavenFlight's API/Product",
         description: 'Agentic CRO SaaS product on Typescript monorepo with model cost telemetry and sandboxing.',
         closedSource: true

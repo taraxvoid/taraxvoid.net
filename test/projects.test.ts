@@ -2,11 +2,6 @@ import { describe, expect, it } from 'vitest';
 import { projects } from '../src/data/projects';
 
 describe('projects data', () => {
-    it('gives every entry a unique reference tag', () => {
-        const refs = projects.map((p) => p.ref);
-        expect(new Set(refs).size).toBe(refs.length);
-    });
-
     it('gives every entry with an href a link label', () => {
         for (const project of projects) {
             if (project.href) {

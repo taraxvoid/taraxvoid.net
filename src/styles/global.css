@@ -139,6 +139,10 @@
     --color-redact-edge: light-dark(#0f0d13, #57546a);
     --color-redpen: light-dark(#b23a2f, #ff8f80);
     --color-focus: light-dark(#6d28d9, #ffd479);
+    /* RavenFlight's fixed brand-purple pair (same in both themes): dark for
+       professional work, light for open source. */
+    --color-bar-pro: #7c3aed;
+    --color-bar-oss: #c4b5fd;
     --color-shadow: light-dark(rgb(15 13 19 / 0.07), rgb(0 0 0 / 0.5));
 }
 

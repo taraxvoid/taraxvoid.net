@@ -3,10 +3,9 @@ import ContactForm from '../components/ContactForm.astro';
 import DossierRow from '../components/DossierRow.astro';
 import Footer from '../components/Footer.astro';
 import Masthead from '../components/Masthead.astro';
+import ProjectSections from '../components/ProjectSections.astro';
 import RedactedBar from '../components/RedactedBar.astro';
 import Spoiler from '../components/Spoiler.astro';
-import WorkEntry from '../components/WorkEntry.astro';
-import { projects } from '../data/projects';
 import Layout from '../layouts/Layout.astro';
 ---
 
@@ -16,7 +15,7 @@ import Layout from '../layouts/Layout.astro';
 >
     <div class="min-h-screen bg-desk p-8 sm:p-14">
         <div
-            transition:name="sheet" class="sheet mx-auto max-w-[900px] px-6 py-11 sm:px-14"
+            transition:name="sheet" class="sheet mx-auto max-w-[900px] px-6 py-5 sm:px-14"
         >
             <Masthead />
 
@@ -61,13 +60,7 @@ import Layout from '../layouts/Layout.astro';
                     <ContactForm />
                 </div>
 
-                <div class="flex flex-col">
-                    <h2 class="border-t pt-5 pb-1 text-[15px] font-bold" style="border-color: var(--color-ink);">
-                        Activities
-                    </h2>
-                    {projects.map((project) => <WorkEntry project={project} />)}
-                    <div class="border-t" style="border-color: var(--color-ink);"></div>
-                </div>
+                <ProjectSections />
 
                 <div
                     class="mt-6 border border-dashed px-4 py-3 font-mono text-[13px]"
