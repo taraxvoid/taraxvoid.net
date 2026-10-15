@@ -2,3 +2,6 @@
 bun = "latest"
 node = "24.21.0"
 lefthook = "2.1.16"
+jactionlint = "2.1.0"
+# Used by jactionlint to check `run:` scripts.
+shellcheck = "0.11.0"

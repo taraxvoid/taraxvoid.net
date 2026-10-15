@@ -23,7 +23,7 @@
         "prepare": "lefthook install || echo 'lefthook not installed (run mise install); git hooks skipped'",
         "test:push": "bun run lint && bun run test",
         "resume:pdf": "bun scripts/resume-pdf.ts",
-        "lint:actions": "./scripts/lint-actions.sh",
+        "lint:actions": "jactionlint --color",
         "audit": "bun audit --audit-level high --production"
     },
     "engines": {
