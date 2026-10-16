@@ -1,11 +1,11 @@
 import { describe, expect, it } from 'vitest';
 import {
-    THEME_COLORS,
-    THEME_STORAGE_KEY,
     applyPreference,
     parsePreference,
     readStoredPreference,
     resolveTheme,
+    THEME_COLORS,
+    THEME_STORAGE_KEY,
     themeColorFor,
     writeStoredPreference
 } from '../src/lib/theme';

@@ -1,8 +1,8 @@
 import {
-    type ResolvedTheme,
-    type ThemePreference,
     applyPreference,
+    type ResolvedTheme,
     readStoredPreference,
+    type ThemePreference,
     themeColorFor
 } from './theme';
 

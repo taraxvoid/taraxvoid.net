@@ -1,6 +1,6 @@
 import { env } from 'cloudflare:workers';
 import type { APIRoute } from 'astro';
-import { RATE_LIMIT_TTL_SECONDS, buildEmail, parseContact, rateLimitKey } from '../../lib/contact';
+import { buildEmail, parseContact, RATE_LIMIT_TTL_SECONDS, rateLimitKey } from '../../lib/contact';
 
 export const prerender = false;
 

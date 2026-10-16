@@ -1,4 +1,4 @@
-import { type Page, expect, test } from '@playwright/test';
+import { expect, type Page, test } from '@playwright/test';
 
 // Relative luminance of the body background, 0 (black) to 1 (white).
 async function bodyLuminance(page: Page) {
