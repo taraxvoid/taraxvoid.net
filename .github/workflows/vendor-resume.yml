@@ -1,0 +1,100 @@
+name: Vendor resume
+
+# Copies the Omaha resume from taraxvoid/resumes (public/omaha/) into this
+# site and opens (or updates) one PR. Runs when resumes' CI sends
+# `resume-updated`, weekly as a fallback, or by hand. The PR then goes
+# through ci.yml like any other change, which is why it is opened with
+# RESUME_SYNC_TOKEN: a PR opened with GITHUB_TOKEN would not trigger CI.
+#
+# RESUME_SYNC_TOKEN: fine-grained PAT. taraxvoid/resumes: Contents read.
+# taraxvoid/taraxvoid.net: Contents read/write, Pull requests read/write.
+
+on:
+  repository_dispatch:
+    types: [resume-updated]
+  schedule:
+    - cron: '29 15 * * 1' # Monday 15:29 UTC
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: vendor-resume
+  cancel-in-progress: false
+
+jobs:
+  vendor:
+    name: Vendor resume
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    env:
+      BRANCH: chore/vendor-resume
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Resolve the resumes commit
+        id: source
+        env:
+          GH_TOKEN: ${{ secrets.RESUME_SYNC_TOKEN }}
+          # From the dispatch; validated before use, never interpolated.
+          REQUESTED: ${{ github.event.client_payload.sha }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::RESUME_SYNC_TOKEN is not set."
+            exit 1
+          fi
+          ref=main
+          if [ -n "$REQUESTED" ]; then
+            [[ "$REQUESTED" =~ ^[0-9a-f]{40}$ ]] || { echo "::error::client_payload.sha is not a commit SHA"; exit 1; }
+            ref="$REQUESTED"
+          fi
+          sha=$(gh api "repos/taraxvoid/resumes/commits/$ref" --jq .sha)
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+
+      - name: Fetch public/omaha
+        env:
+          GH_TOKEN: ${{ secrets.RESUME_SYNC_TOKEN }}
+          SHA: ${{ steps.source.outputs.sha }}
+        run: |
+          set -euo pipefail
+          fetch() {
+            gh api -H 'Accept: application/vnd.github.raw+json' \
+              "repos/taraxvoid/resumes/contents/public/omaha/$1?ref=$SHA" > "$2"
+          }
+          fetch resume.json src/data/resume.json
+          fetch resume.md public/resume.md
+          fetch resume.pdf public/resume.pdf
+          # Cheap sanity checks; the PR's CI runs the real ones (resume-parse tests, build, e2e).
+          jq -e '.basics.name // .name' src/data/resume.json > /dev/null
+          head -c 5 public/resume.pdf | grep -q '%PDF-'
+          test -s public/resume.md
+
+      - name: Open or update the PR
+        env:
+          GH_TOKEN: ${{ secrets.RESUME_SYNC_TOKEN }}
+          SHA: ${{ steps.source.outputs.sha }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- src/data/resume.json public/resume.md public/resume.pdf; then
+            echo "::notice::Resume already matches taraxvoid/resumes@${SHA:0:7}."
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git switch -c "$BRANCH"
+          git add src/data/resume.json public/resume.md public/resume.pdf
+          git commit -m "chore(resume): vendor taraxvoid/resumes@${SHA:0:7}"
+          # Bot-owned branch, rebuilt from main each run.
+          git push --force "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" "HEAD:refs/heads/$BRANCH"
+          body="Vendored from taraxvoid/resumes@${SHA} (public/omaha). Opened by vendor-resume.yml."
+          if [ -n "$(gh pr list --repo "$REPO" --head "$BRANCH" --state open --json number --jq '.[].number')" ]; then
+            gh pr edit "$BRANCH" --repo "$REPO" --title "chore(resume): vendor taraxvoid/resumes@${SHA:0:7}" --body "$body"
+          else
+            gh pr create --repo "$REPO" --base main --head "$BRANCH" \
+              --title "chore(resume): vendor taraxvoid/resumes@${SHA:0:7}" --body "$body"
+          fi
