@@ -65,7 +65,7 @@ export const projects: Project[] = [
         group: 'professional',
         title: 'RavenFlight API',
         description:
-            'Agentic conversion-rate-optimization (CRO) product: a TypeScript monorepo with sandboxed model calls and cost telemetry.',
+            "Agent-native conversion platform that tests a business's conversion surface the way customers and AI agents use it. TypeScript on Cloudflare, with sandboxed model calls and cost telemetry.",
         closedSource: true
     }
 ];

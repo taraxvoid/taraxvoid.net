@@ -27,7 +27,7 @@ export const experience: ExperienceEntry[] = [
         location: 'Omaha, NE',
         highlights: [
             'Built and open-sourced voidsuite, an internal developer platform: shared CI/CD with security, accessibility and performance gates as code (voidflow), DORA and uptime metrics (voidlight) and a site template (voidsite), running 5 production sites.',
-            'Built an agent-native conversion rate optimization (CRO) product with sandboxed model calls, cost telemetry, cross-model review, human gating and provider fallback.',
+            "Built RavenFlight, an agent-native conversion platform that tests a business's conversion surface the way customers and their AI agents use it and ranks the highest-leverage fixes, with sandboxed model calls, cost telemetry, cross-model review, human gating and provider fallback.",
             'Run coding agents in capability tiers with guardrails as code (rookery): read-only agents in an OS sandbox, a safe-git allowlist, per-tier spend limits and dispatch that issue text cannot steer.'
         ]
     },
