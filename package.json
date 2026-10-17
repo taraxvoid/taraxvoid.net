@@ -8,7 +8,7 @@
         "types": "wrangler types",
         "predev": "bun run types",
         "dev": "astro dev",
-        "build": "bun run resume:pdf && astro build",
+        "build": "astro build",
         "preview": "astro preview",
         "deploy": "wrangler deploy",
         "check": "wrangler types && astro check",
@@ -22,7 +22,6 @@
         "test:e2e:a11y": "playwright test --project=a11y",
         "prepare": "lefthook install || echo 'lefthook not installed (run mise install); git hooks skipped'",
         "test:push": "bun run lint && bun run test",
-        "resume:pdf": "bun scripts/resume-pdf.ts",
         "lint:actions": "jactionlint --color",
         "audit": "bun audit --audit-level high --production"
     },

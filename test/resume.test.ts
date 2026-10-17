@@ -1,14 +1,17 @@
+import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
-import { coreSkills, education, experience, location, openSource, summary } from '../src/data/resume';
-import { renderResumeMarkdown } from '../src/lib/resume-md';
+import { experience, location } from '../src/data/resume';
+import data from '../src/data/resume.json';
+import { parseResume } from '../src/lib/resume-parse';
+
+const markdown = readFileSync(new URL('../public/resume.md', import.meta.url), 'utf8');
 
 // Guards the privacy constraint from the design spec: the public resume
-// data must never carry the legal name or phone number from the private,
-// gitignored source resume.
+// must never carry the legal name or phone number from the private source.
 const FORBIDDEN = [/REDACTED/i, /REDACTED/i, /REDACTED_PHONE/];
 
-describe('resume data stays redacted', () => {
-    const haystack = `${JSON.stringify({ summary, location, experience, coreSkills, openSource, education })}\n${renderResumeMarkdown()}`;
+describe('vendored resume stays redacted', () => {
+    const haystack = `${JSON.stringify(data)}\n${markdown}`;
 
     for (const pattern of FORBIDDEN) {
         it(`never contains ${pattern}`, () => {
@@ -17,23 +20,20 @@ describe('resume data stays redacted', () => {
     }
 });
 
-describe('markdown resume is generated from the data', () => {
-    const md = renderResumeMarkdown();
-
-    it('contains every role and highlight', () => {
-        for (const entry of experience) {
-            expect(md).toContain(`### ${entry.org}`);
-            for (const h of entry.highlights) expect(md).toContain(`- ${h}`);
-        }
+describe('vendored resume', () => {
+    it('matches the shape taraxvoid/resumes publishes', () => {
+        expect(() => parseResume(data)).not.toThrow();
+        expect(() => parseResume({ ...data, version: 2 })).toThrow();
+        expect(() => parseResume({ ...data, experience: [] })).toThrow();
+        expect(() => parseResume(null)).toThrow();
     });
 
-    it('lists the open source work', () => {
-        for (const item of openSource) expect(md).toContain(`- ${item}`);
+    it('is the Omaha variant', () => {
+        expect(location).toContain('Omaha, NE');
     });
 
-    it('carries the summary, location and education', () => {
-        expect(md).toContain(summary);
-        expect(md).toContain(location);
-        expect(md).toContain(education.school);
+    it('has a Markdown copy from the same build', () => {
+        expect(markdown).toContain(location);
+        for (const entry of experience) expect(markdown).toContain(entry.org);
     });
 });
