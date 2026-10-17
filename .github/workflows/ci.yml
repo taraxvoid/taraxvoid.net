@@ -14,7 +14,7 @@ permissions:
 
 jobs:
   validate:
-    uses: taraxvoid/voidflow/.github/workflows/site-ci.yml@b43fc0d3fb8077fc5a25449dd9ebd716ee1eb604 # v0.11.1
+    uses: taraxvoid/voidflow/.github/workflows/site-ci.yml@2702230a04e50c6592bbc816042371f695e2db93 # v0.13.0
     with:
       single-environment: true
 
@@ -44,7 +44,7 @@ jobs:
         run: bun run build
 
       - name: Deploy
-        uses: taraxvoid/voidflow/actions/cloudflare-deploy@b43fc0d3fb8077fc5a25449dd9ebd716ee1eb604 # v0.11.1
+        uses: taraxvoid/voidflow/actions/cloudflare-deploy@2702230a04e50c6592bbc816042371f695e2db93 # v0.13.0
         with:
           env: ${{ needs.resolve-env.outputs.env }}
           cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
