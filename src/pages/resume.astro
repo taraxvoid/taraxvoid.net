@@ -1,14 +1,21 @@
 ---
-import DossierRow from '../components/DossierRow.astro';
-import Footer from '../components/Footer.astro';
-import Masthead from '../components/Masthead.astro';
-import { coreSkills, education, experience, location, openSource, summary } from '../data/resume';
-import Layout from '../layouts/Layout.astro';
+import DossierRow from '../components/DossierRow.astro'
+import Footer from '../components/Footer.astro'
+import Masthead from '../components/Masthead.astro'
+import {
+    coreSkills,
+    education,
+    experience,
+    location,
+    openSource,
+    summary,
+} from '../data/resume'
+import Layout from '../layouts/Layout.astro'
 
 // Suggested save-as name, stamped at build time so a downloaded copy is
 // identifiable on disk (the site is static, so this is the generation date).
-const stamp = new Date().toISOString().slice(0, 10);
-const downloadName = (ext: string) => `resume_Tara-X-Void-${stamp}.${ext}`;
+const stamp = new Date().toISOString().slice(0, 10)
+const downloadName = (ext: string) => `resume_Tara-X-Void-${stamp}.${ext}`
 ---
 
 <Layout title="Resume - Tara \X/ Void" description={summary}>

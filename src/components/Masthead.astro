@@ -1,19 +1,22 @@
 ---
-import ThemeToggle from './ThemeToggle.astro';
+import ThemeToggle from './ThemeToggle.astro'
 
 interface Props {
-    active?: 'activities' | 'resume';
+    active?: 'activities' | 'resume'
 }
 
-const { active } = Astro.props;
+const { active } = Astro.props
 
 const navLink = (href: string, label: string, key: string) => ({
     href,
     label,
-    current: active === key
-});
+    current: active === key,
+})
 
-const links = [navLink('/activities', 'Activities', 'activities'), navLink('/resume', 'Resume', 'resume')];
+const links = [
+    navLink('/activities', 'Activities', 'activities'),
+    navLink('/resume', 'Resume', 'resume'),
+]
 ---
 
 <header class="flex flex-col items-center gap-4 md:flex-row md:justify-between px-5 py-4">

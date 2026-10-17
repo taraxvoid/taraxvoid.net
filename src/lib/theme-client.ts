@@ -3,20 +3,25 @@ import {
     type ResolvedTheme,
     readStoredPreference,
     type ThemePreference,
-    themeColorFor
-} from './theme';
+    themeColorFor,
+} from './theme'
 
 export function safeStorage(): Storage | null {
     try {
-        return window.localStorage;
+        return window.localStorage
     } catch {
-        return null;
+        return null
     }
 }
 
 export function syncThemeColor(preference: ThemePreference) {
-    for (const meta of document.querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]')) {
-        meta.content = themeColorFor(preference, meta.dataset.scheme as ResolvedTheme);
+    for (const meta of document.querySelectorAll<HTMLMetaElement>(
+        'meta[name="theme-color"]',
+    )) {
+        meta.content = themeColorFor(
+            preference,
+            meta.dataset.scheme as ResolvedTheme,
+        )
     }
 }
 
@@ -24,7 +29,7 @@ export function syncThemeColor(preference: ThemePreference) {
 // page's (which know nothing about the stored choice), so re-apply it after
 // every swap. Imported once from HeadMeta.astro.
 document.addEventListener('astro:after-swap', () => {
-    const preference = readStoredPreference(safeStorage());
-    applyPreference(document.documentElement, preference);
-    syncThemeColor(preference);
-});
+    const preference = readStoredPreference(safeStorage())
+    applyPreference(document.documentElement, preference)
+    syncThemeColor(preference)
+})

@@ -3,11 +3,19 @@
 // its public/omaha/ output. Never edit them here; change taraxvoid/resumes,
 // run `bun run build` there, then copy public/omaha/* over these three files.
 // That output is already redacted: no legal name, phone or street address.
-import { type ExperienceEntry, parseResume } from '../lib/resume-parse';
-import data from './resume.json';
+import { type ExperienceEntry, parseResume } from '../lib/resume-parse'
+import data from './resume.json'
 
-export type { ExperienceEntry };
+export type { ExperienceEntry }
 
-export const resume = parseResume(data);
+export const resume = parseResume(data)
 
-export const { name, summary, location, experience, coreSkills, openSource, education } = resume;
+export const {
+    name,
+    summary,
+    location,
+    experience,
+    coreSkills,
+    openSource,
+    education,
+} = resume

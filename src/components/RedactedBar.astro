@@ -1,12 +1,12 @@
 ---
 interface Props {
     /** Character counts for each blacked-out word, used only to size the bars. */
-    wordLengths: number[];
-    label: string;
+    wordLengths: number[]
+    label: string
 }
 
-const { wordLengths, label } = Astro.props;
-const charWidth = 9; // px per character at this bar height, tuned by eye
+const { wordLengths, label } = Astro.props
+const charWidth = 9 // px per character at this bar height, tuned by eye
 ---
 
 <span role="img" aria-label={label} class="inline-flex items-center gap-1.5">

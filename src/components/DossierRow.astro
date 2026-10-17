@@ -1,13 +1,13 @@
 ---
 interface Props {
-    label: string;
+    label: string
     /** Larger, darker, Redaction-typeface label used for the dossier info block. */
-    emphasis?: boolean;
+    emphasis?: boolean
     /** Bold the emphasized label. */
-    bold?: boolean;
+    bold?: boolean
 }
 
-const { label, emphasis = false, bold = true } = Astro.props;
+const { label, emphasis = false, bold = true } = Astro.props
 ---
 
 <div class="flex items-baseline gap-2.5">

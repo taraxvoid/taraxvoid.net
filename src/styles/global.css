@@ -171,7 +171,8 @@
         background-size: 6px 6px;
         box-shadow:
             6px 6px 0 var(--color-shadow),
-            12px 12px 0 color-mix(in oklab, var(--color-shadow) 50%, transparent);
+            12px 12px 0
+            color-mix(in oklab, var(--color-shadow) 50%, transparent);
         color: var(--color-ink);
     }
 }

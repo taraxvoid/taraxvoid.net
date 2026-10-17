@@ -1,4 +1,11 @@
 {
     "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": ["github>taraxvoid/voidflow"]
+    "extends": ["github>taraxvoid/voidflow"],
+    "packageRules": [
+        {
+            "description": "Keep voidflow as a caret range; Renovate only moves the lockfile within it",
+            "matchPackageNames": ["@taraxvoid/voidflow"],
+            "rangeStrategy": "update-lockfile"
+        }
+    ]
 }

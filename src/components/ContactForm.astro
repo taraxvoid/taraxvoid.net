@@ -1,6 +1,8 @@
 ---
 // Cloudflare's always-pass test key; the production key rejects localhost.
-const siteKey = import.meta.env.DEV ? '1x00000000000000000000AA' : '0x4AAAAAAFJlbd0V5F4X3byG';
+const siteKey = import.meta.env.DEV
+    ? '1x00000000000000000000AA'
+    : '0x4AAAAAAFJlbd0V5F4X3byG'
 ---
 
 <form id="contact" method="POST" action="/api/contact" aria-label="Contact" class="flex flex-col gap-3.5">

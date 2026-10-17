@@ -1,10 +1,10 @@
 ---
-import { projects } from '../data/projects';
-import SectionHeading from './SectionHeading.astro';
-import WorkEntry from './WorkEntry.astro';
+import { projects } from '../data/projects'
+import SectionHeading from './SectionHeading.astro'
+import WorkEntry from './WorkEntry.astro'
 
-const openSource = projects.filter((p) => p.group === 'open-source');
-const professional = projects.filter((p) => p.group === 'professional');
+const openSource = projects.filter((p) => p.group === 'open-source')
+const professional = projects.filter((p) => p.group === 'professional')
 ---
 
 <div class="flex flex-col">

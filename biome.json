@@ -1,46 +1,13 @@
 {
     "$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
-    "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
-    "files": { "ignoreUnknown": false },
-    "formatter": {
-        "enabled": true,
-        "formatWithErrors": false,
-        "indentStyle": "space",
-        "indentWidth": 4,
-        "lineEnding": "lf",
-        "lineWidth": 120,
-        "attributePosition": "auto",
-        "bracketSpacing": true
-    },
+    "extends": ["@taraxvoid/voidflow/biome"],
     "linter": {
-        "enabled": true,
-        "rules": { "preset": "none" },
-        "includes": ["**", "!**/dist/**", "!**/.astro/**", "!**/public/fonts/**"]
-    },
-    "overrides": [
-        {
-            "includes": ["**/*.astro"],
-            "linter": {
-                "rules": {
-                    "correctness": {
-                        "noUnusedImports": "off",
-                        "noUnusedVariables": "off"
-                    }
-                }
-            }
-        }
-    ],
-    "javascript": {
-        "formatter": {
-            "quoteProperties": "asNeeded",
-            "trailingCommas": "none",
-            "semicolons": "always",
-            "arrowParentheses": "always",
-            "bracketSameLine": false,
-            "quoteStyle": "single",
-            "attributePosition": "auto",
-            "bracketSpacing": true
-        }
+        "includes": [
+            "**",
+            "!**/dist/**",
+            "!**/.astro/**",
+            "!**/public/fonts/**"
+        ]
     },
     "css": {
         "parser": {

@@ -1,12 +1,15 @@
 ---
-import type { Project } from '../data/projects';
+import type { Project } from '../data/projects'
 
 interface Props {
-    project: Project;
+    project: Project
 }
 
-const { project } = Astro.props;
-const spineColor = project.group === 'professional' ? 'var(--color-bar-pro)' : 'var(--color-bar-oss)';
+const { project } = Astro.props
+const spineColor =
+    project.group === 'professional'
+        ? 'var(--color-bar-pro)'
+        : 'var(--color-bar-oss)'
 ---
 
 <div class="flex gap-4 border-t border-dashed py-[18px]" style="border-color: var(--color-paper-line);">
