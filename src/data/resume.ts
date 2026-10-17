@@ -9,7 +9,7 @@ export const name = 'Tara \\X/ Void';
 export const summary =
     'Platform engineer working on developer experience and security: CI/CD, supply-chain controls and paved roads for developers and coding agents. 15 years across product security, threat intelligence and production operations at Datadog, Salesforce, Yahoo, Tile and MITRE. Builds voidsuite, an open-source internal developer platform for CI/CD, delivery metrics and coding-agent guardrails.';
 
-export const location = 'Omaha, NE (remote-friendly)';
+export const location = 'Omaha, NE · open to onsite or hybrid';
 
 export interface ExperienceEntry {
     org: string;
