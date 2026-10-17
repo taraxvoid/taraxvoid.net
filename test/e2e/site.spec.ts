@@ -44,11 +44,20 @@ test('the name lockup links home and the theme toggle sits in the header', async
 test('the resume page offers a pdf download', async ({ page }) => {
     await page.goto('/resume')
     const href = await page
-        .getByRole('link', { name: 'Download .pdf' })
+        .getByRole('link', { name: 'Download resume as PDF file (.pdf)' })
         .getAttribute('href')
     const response = await page.request.get(href ?? '')
     expect(response.status()).toBe(200)
     expect(response.headers()['content-type']).toContain('pdf')
+})
+
+test('the resume page offers a markdown download', async ({ page }) => {
+    await page.goto('/resume')
+    const href = await page
+        .getByRole('link', { name: 'Download resume as Markdown file (.md)' })
+        .getAttribute('href')
+    const response = await page.request.get(href ?? '')
+    expect(response.status()).toBe(200)
 })
 
 // iPhone 16 (393), Pixel 9 (412), Pixel 10 (412), plus a small-phone floor
