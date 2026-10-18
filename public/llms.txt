@@ -1,0 +1,20 @@
+# Tara \X/ Void
+
+> Platform, DevEx and security engineer in Omaha, NE. CI/CD, supply-chain security and guardrails for coding agents. Pronouns: xe/xem (she/her secondary).
+
+## Pages
+
+- [Home](https://taraxvoid.net/): role, current work and contact form
+- [Activities](https://taraxvoid.net/activities): open-source and professional projects
+- [Resume](https://taraxvoid.net/resume): experience, skills and education
+
+## Machine-readable resume
+
+- [resume.md](https://taraxvoid.net/resume.md): Markdown
+- [resume.json](https://taraxvoid.net/resume.json): structured JSON
+- [resume.pdf](https://taraxvoid.net/resume.pdf): PDF
+
+## Elsewhere
+
+- [GitHub](https://github.com/taraxvoid)
+- [RavenFlight](https://ravenflight.io): current company

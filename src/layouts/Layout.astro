@@ -9,6 +9,60 @@ interface Props {
 }
 
 const { title, description } = Astro.props
+const canonical = new URL(Astro.url.pathname, Astro.site).href
+const siteName = 'Tara \\X/ Void'
+const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+        {
+            '@type': 'WebSite',
+            '@id': 'https://taraxvoid.net/#website',
+            url: 'https://taraxvoid.net/',
+            name: siteName,
+            inLanguage: 'en',
+            publisher: { '@id': 'https://taraxvoid.net/#person' },
+        },
+        {
+            '@type': 'Person',
+            '@id': 'https://taraxvoid.net/#person',
+            name: siteName,
+            url: 'https://taraxvoid.net/',
+            jobTitle: 'Platform, DevEx & Security Engineer',
+            description:
+                'Platform, DevEx and security engineer: CI/CD, supply-chain security and guardrails for coding agents.',
+            pronouns: 'xe/xem, she/her',
+            address: {
+                '@type': 'PostalAddress',
+                addressLocality: 'Omaha',
+                addressRegion: 'NE',
+                addressCountry: 'US',
+            },
+            worksFor: {
+                '@type': 'Organization',
+                name: 'RavenFlight Industries, LLC',
+                url: 'https://ravenflight.io',
+            },
+            knowsAbout: [
+                'Platform engineering',
+                'Developer experience',
+                'CI/CD',
+                'Supply-chain security',
+                'Product security',
+                'Coding agent guardrails',
+            ],
+            sameAs: ['https://github.com/taraxvoid'],
+        },
+        {
+            '@type': 'WebPage',
+            '@id': `${canonical}#webpage`,
+            url: canonical,
+            name: title,
+            description,
+            isPartOf: { '@id': 'https://taraxvoid.net/#website' },
+            about: { '@id': 'https://taraxvoid.net/#person' },
+        },
+    ],
+}
 ---
 
 <!doctype html>
@@ -18,7 +72,24 @@ const { title, description } = Astro.props
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>{title}</title>
         <meta name="description" content={description} />
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+        <meta name="author" content={siteName} />
+        <link rel="canonical" href={canonical} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content={siteName} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:locale" content="en_US" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
         <link rel="sitemap" href="/sitemap-index.xml" />
+        <link rel="alternate" type="text/markdown" href="/resume.md" title="Resume (Markdown)" />
+        <link rel="alternate" type="application/json" href="/resume.json" title="Resume (JSON)" />
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
+        <link rel="me" href="https://github.com/taraxvoid" />
+        <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
         <HeadMeta />
         <ClientRouter />
     </head>

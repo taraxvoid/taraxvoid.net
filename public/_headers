@@ -1,0 +1,8 @@
+/
+  Link: </resume.md>; rel="alternate"; type="text/markdown", </resume.json>; rel="alternate"; type="application/json", </llms.txt>; rel="describedby"; type="text/plain"
+/resume.md
+  Content-Type: text/markdown; charset=utf-8
+/resume.json
+  Access-Control-Allow-Origin: *
+/llms.txt
+  Content-Type: text/plain; charset=utf-8
