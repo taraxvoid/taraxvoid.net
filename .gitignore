@@ -1,6 +1,17 @@
 # source resumes
 /input
 
+# Environment secrets and local config
+# i.e. Wrangler / Cloudflare
+.env
+.env.*
+.env.fish
+!.env.example
+.wrangler
+.dev.vars*
+!.dev.vars.example
+worker-configuration.d.ts
+
 # sqlite DB 
 *.db
 *.db-journal
@@ -12,7 +23,7 @@ output/
 .astro/
 worker-configuration.d.ts
 
-# Cloudflare
+# builds / Cloudflare
 .wrangler/
 dist/
 
@@ -20,15 +31,14 @@ dist/
 test-results/
 playwright-report/
 blob-report/
+.playwright/
+.last-run.json
 
 # Dependencies
 node_modules/
 
-# Environment
-.env
-.env.*
-.env.fish
-!.env.example
+# Lighthouse CI
+.lighthouseci/
 
 # Editor / bots
 .poolside/
@@ -43,6 +53,8 @@ docs/superpowers
 
 # OS
 .DS_Store
+
+# Windows
 Thumbs.db
 
 # Logs
@@ -51,4 +63,23 @@ npm-debug.log*
 
 # TypeScript
 *.tsbuildinfo
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Vite files
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*
+.vite/
+
+.superpowers/
 
