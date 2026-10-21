@@ -1,0 +1,57 @@
+---
+// The case for hiring, above the fold. Every claim here is drawn from the
+// vendored resume (src/data/resume.json); keep them in step when it changes.
+const proofs = [
+    {
+        claim: 'Cut staging environments from six hours of manual work to 20 minutes per feature branch.',
+        source: 'Lindsay Corporation',
+    },
+    {
+        claim: 'Built the security paved road for about 150 engineers: shared Go libraries, CI checks and self-serve scanners.',
+        source: 'Datadog',
+    },
+    {
+        claim: 'Rolled out coding agents to seven product teams, sandboxed with scoped permissions and spend limits.',
+        source: 'Lindsay Corporation',
+    },
+]
+---
+
+<section aria-label="Why hire me" class="flex flex-col gap-5">
+    <p class="text-[19px] leading-snug sm:text-[21px]">
+        I build paved roads: CI/CD, supply-chain controls and guardrails that let developers and coding agents ship
+        quickly without shipping risk. Fifteen years in security and operations at Datadog, Salesforce, Yahoo, Tile
+        and MITRE.
+    </p>
+    <ul class="flex flex-col gap-3">
+        {
+            proofs.map((proof) => (
+                <li class="flex gap-3">
+                    <svg
+                        class="mt-1.5 flex-shrink-0 -rotate-6"
+                        width="15"
+                        height="15"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="var(--color-redpen)"
+                        stroke-width="3"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        aria-hidden="true"
+                    >
+                        <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    <p class="text-[15px] leading-relaxed">
+                        {proof.claim}{' '}
+                        <span class="whitespace-nowrap font-mono text-xs" style="color: var(--color-secondary);">
+                            {proof.source}
+                        </span>
+                    </p>
+                </li>
+            ))
+        }
+    </ul>
+    <p class="text-[15px]">
+        <a href="/resume">Read the full resume</a> or <a href="/resume.pdf">download the PDF</a>.
+    </p>
+</section>

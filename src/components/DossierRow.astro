@@ -21,6 +21,8 @@ const { label, emphasis = false, bold = true } = Astro.props
     >
         {label}
     </span>
-    <span class="mb-1 flex-1 border-b border-dotted" style="border-color: var(--color-paper-line);"></span>
-    <slot />
+    {/* The leader keeps a minimum width so a wrapping value stays pinned right
+       instead of collapsing the leader and hanging off the label column. */}
+    <span class="mb-1 min-w-6 flex-1 border-b border-dotted" style="border-color: var(--color-paper-line);"></span>
+    <div class="min-w-0 text-right text-balance"><slot /></div>
 </div>

@@ -23,8 +23,10 @@
         height: 2.25rem;
         padding: 0;
         border: 1px solid var(--color-ink);
-        background: transparent;
-        color: var(--color-ink);
+        /* Inverted (ink ground, paper icon) so it reads as a light switch
+           rather than another nav link. */
+        background: var(--color-ink);
+        color: var(--color-paper);
         cursor: pointer;
     }
     .theme-toggle[hidden] {
@@ -34,8 +36,8 @@
        leaves the button looking selected. */
     @media (hover: hover) {
         .theme-toggle:hover {
-            background: var(--color-ink);
-            color: var(--color-paper);
+            background: transparent;
+            color: var(--color-ink);
         }
     }
     .theme-toggle:focus-visible {

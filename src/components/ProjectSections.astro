@@ -8,7 +8,7 @@ const professional = projects.filter((p) => p.group === 'professional')
 ---
 
 <div class="flex flex-col">
-    <SectionHeading href="https://github.com/taraxvoid" linkLabel="taraxvoid on GitHub">Open Source</SectionHeading>
+    <SectionHeading>Open Source</SectionHeading>
     {openSource.map((project) => <WorkEntry project={project} />)}
     <SectionHeading>Professional Work</SectionHeading>
     {professional.map((project) => <WorkEntry project={project} />)}

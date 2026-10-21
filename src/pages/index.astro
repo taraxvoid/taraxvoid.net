@@ -3,6 +3,7 @@ import ContactForm from '../components/ContactForm.astro'
 import DossierRow from '../components/DossierRow.astro'
 import Footer from '../components/Footer.astro'
 import Masthead from '../components/Masthead.astro'
+import Pitch from '../components/Pitch.astro'
 import ProjectSections from '../components/ProjectSections.astro'
 import RedactedBar from '../components/RedactedBar.astro'
 import Layout from '../layouts/Layout.astro'
@@ -12,15 +13,14 @@ import Layout from '../layouts/Layout.astro'
     title="Tara \X/ Void | Platform, DevEx & Security Engineer"
     description="Platform, DevEx and security engineer in Omaha: CI/CD, supply-chain security and guardrails for coding agents."
 >
-    <div class="min-h-screen bg-desk p-8 sm:p-14">
+    <div class="min-h-screen bg-desk p-3 sm:p-14">
         <div
-            transition:name="sheet" class="sheet mx-auto max-w-[900px] px-6 py-5 sm:px-14"
+            transition:name="sheet" class="sheet mx-auto max-w-[900px] px-4 py-5 sm:px-14"
         >
             <Masthead />
 
             <main transition:name="content">
                 <h1 class="sr-only">Tara \X/ Void</h1>
-                <div class="mt-2 border-t border-dashed" style="border-color: var(--color-paper-line);"></div>
                 <div class="mx-auto flex max-w-[620px] flex-col gap-3.5 pb-9 pt-5 sm:pb-10 sm:pt-6">
                     <DossierRow label="AKA" emphasis>
                         <RedactedBar wordLengths={[4, 10]} label="redacted" />
@@ -40,29 +40,23 @@ import Layout from '../layouts/Layout.astro'
 
                     <DossierRow label="Currently" emphasis>
                         <span class="font-redaction-35 text-[15px] tracking-wide">
-                            Principal Engineer
-                            <a
+                            Principal Engineer <span class="whitespace-nowrap">@ <a
                                 href="https://ravenflight.io"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 class="underline"
-                                style="color: var(--color-ink);"> @ RavenFlight</a
-                            >
+                                style="color: var(--color-ink);">RavenFlight</a
+                            ></span>
                         </span>
                     </DossierRow>
 
+                    <hr class="border-0 border-t border-dashed" style="border-color: var(--color-paper-line);" />
+                    <Pitch />
                     <hr class="border-0 border-t border-dashed" style="border-color: var(--color-paper-line);" />
                     <ContactForm />
                 </div>
 
                 <ProjectSections />
-
-                <div
-                    class="mt-6 border border-dashed px-4 py-3 font-mono text-[13px]"
-                    style="border-color: var(--color-paper-line);"
-                >
-                    GitHub: 1,842 contributions, 9 public repos, 41-day streak
-                </div>
             </main>
 
             <Footer />

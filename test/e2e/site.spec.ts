@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test'
 
-for (const path of ['/', '/activities', '/resume']) {
+for (const path of ['/', '/resume']) {
     test(`${path} loads`, async ({ page }) => {
         const response = await page.goto(path)
         expect(response?.status()).toBe(200)
@@ -24,7 +24,7 @@ test('homepage renders the inline contact form', async ({ page }) => {
 
 test('the paper frame keeps the same width on every page', async ({ page }) => {
     const widths: number[] = []
-    for (const path of ['/', '/activities', '/resume']) {
+    for (const path of ['/', '/resume']) {
         await page.goto(path)
         const box = await page.locator('.sheet').boundingBox()
         widths.push(Math.round(box?.width ?? 0))
@@ -39,6 +39,20 @@ test('the name lockup links home and the theme toggle sits in the header', async
     await page.getByRole('link', { name: /home/i }).click()
     await expect(page).toHaveURL(/\/$/)
     await expect(page.locator('header [data-theme-toggle]')).toBeVisible()
+})
+
+test('the old activities page redirects home', async ({ page }) => {
+    await page.goto('/activities')
+    await expect(page).toHaveURL(/\/$/)
+})
+
+test('the header links to GitHub from the lockup', async ({ page }) => {
+    await page.goto('/')
+    await expect(
+        page
+            .locator('header')
+            .getByRole('link', { name: 'taraxvoid on GitHub' }),
+    ).toHaveAttribute('href', 'https://github.com/taraxvoid')
 })
 
 test('the resume page offers a pdf download', async ({ page }) => {
@@ -62,9 +76,7 @@ test('the resume page offers a markdown download', async ({ page }) => {
 
 // iPhone 16 (393), Pixel 9 (412), Pixel 10 (412), plus a small-phone floor
 for (const width of [360, 393, 412]) {
-    test(`header lockup brackets stay on one row at ${width}px`, async ({
-        page,
-    }) => {
+    test(`header lockup stays on one row at ${width}px`, async ({ page }) => {
         await page.setViewportSize({ width, height: 852 })
         await page.goto('/')
         const parts = page.locator('a.masthead-lockup > *')

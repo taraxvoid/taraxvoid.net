@@ -125,7 +125,7 @@ test.describe('without JavaScript', () => {
 test('an explicit choice survives client-side navigation', async ({ page }) => {
     await page.goto('/')
     await toggle(page).click()
-    await page.getByRole('link', { name: 'Resume' }).click()
+    await page.locator('header').getByRole('link', { name: 'Resume' }).click()
     await expect(page).toHaveURL(/\/resume\/?$/)
     expect(await dataTheme(page)).toBe('dark')
     await expect(toggle(page)).toHaveAccessibleName('Switch to light theme')

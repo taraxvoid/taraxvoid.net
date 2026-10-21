@@ -30,7 +30,7 @@ export default defineConfig({
             include: ['astro/app/manifest', 'astro/logger/json'],
         },
     },
-    redirects: { '/contact': '/#contact' },
+    redirects: { '/contact': '/#contact', '/activities': '/' },
     integrations: [sitemap()],
     adapter: cloudflare({
         imageService: 'passthrough',
