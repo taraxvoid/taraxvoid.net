@@ -7,7 +7,7 @@
     Which icon shows is pure CSS (resolved scheme), so there is no flash. */
 }
 <button type="button" class="theme-toggle" data-theme-toggle aria-label="Toggle color theme" hidden>
-    <svg class="icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="12" cy="12" r="5"></circle>
         <path d="M12 7a5 5 0 0 0 0 10z" fill="currentColor"></path>
         <path d="M12 1.5v2M12 20.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M1.5 12h2M20.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"></path>
@@ -19,14 +19,17 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 2.25rem;
-        height: 2.25rem;
+        /* No fixed size: the row stretches it to Resume's height and the
+           ratio keeps it a circle. */
+        align-self: stretch;
+        aspect-ratio: 1;
         padding: 0;
         border: 1px solid var(--color-ink);
-        /* Inverted (ink ground, paper icon) so it reads as a light switch
-           rather than another nav link. */
-        background: var(--color-ink);
-        color: var(--color-paper);
+        border-radius: 50%;
+        /* Outlined circle so it reads as a light switch rather than another
+           nav link. */
+        background: transparent;
+        color: var(--color-ink);
         cursor: pointer;
     }
     .theme-toggle[hidden] {
@@ -36,8 +39,8 @@
        leaves the button looking selected. */
     @media (hover: hover) {
         .theme-toggle:hover {
-            background: transparent;
-            color: var(--color-ink);
+            background: var(--color-ink);
+            color: var(--color-paper);
         }
     }
     .theme-toggle:focus-visible {
@@ -48,6 +51,8 @@
        to the other side) in dark. No data-theme means "system", so follow
        the media query. */
     .theme-toggle .icon {
+        width: 50%;
+        height: 50%;
         transition: transform 0.2s ease;
     }
     @media (prefers-color-scheme: dark) {
