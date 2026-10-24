@@ -7,7 +7,7 @@
         "binding": "ASSETS"
     },
     "vars": {
-        "TURNSTILE_HOSTNAMES": "taraxvoid.net,taraxvoid.com",
+        "TURNSTILE_HOSTNAMES": "taraxvoid.net",
         "CONTACT_FROM": "contact@taraxvoid.net",
         "CONTACT_TO": "void@taraxvoid.net"
         // void@ is routed to me on cloudflare's end (avoiding putting my personal email in this potentially public config)
@@ -24,10 +24,6 @@
     "routes": [
         {
             "pattern": "taraxvoid.net",
-            "custom_domain": true
-        },
-        {
-            "pattern": "taraxvoid.com",
             "custom_domain": true
         }
     ]
