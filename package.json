@@ -17,7 +17,7 @@
         "format": "biome check --write .",
         "test": "bun run build && npm-run-all -l -p check test:unit -s test:e2e:full",
         "test:unit": "vitest run",
-        "test:e2e:full": "playwright test --project=mobile-chrome --project=desktop-chrome",
+        "test:e2e:full": "playwright install ${CI:+--with-deps} webkit && playwright test --project=mobile-chrome --project=desktop-chrome --project=mobile-safari --project=desktop-safari",
         "test:e2e:all": "bun run test:e2e:full",
         "test:e2e:a11y": "playwright test --project=a11y",
         "prepare": "lefthook install || echo 'lefthook not installed (run mise install); git hooks skipped'",
@@ -50,6 +50,9 @@
         "wrangler": "^4.149.0"
     },
     "overrides": {
-        "sharp": "^0.35.5"
+        "miniflare": {
+            "undici": "^7.30.1",
+            "sharp": "^0.35.5"
+        }
     }
 }

@@ -41,6 +41,21 @@ test('the name lockup links home and the theme toggle sits in the header', async
     await expect(page.locator('header [data-theme-toggle]')).toBeVisible()
 })
 
+test('the theme toggle is a circle as tall as Resume', async ({ page }) => {
+    await page.goto('/')
+    const toggle = await page.locator('[data-theme-toggle]').boundingBox()
+    const resume = await page
+        .locator('header')
+        .getByRole('link', { name: 'Resume' })
+        .boundingBox()
+    expect(
+        Math.abs((toggle?.height ?? 0) - (resume?.height ?? 0)),
+    ).toBeLessThan(2)
+    expect(Math.abs((toggle?.width ?? 0) - (toggle?.height ?? 0))).toBeLessThan(
+        1,
+    )
+})
+
 test('the old activities page redirects home', async ({ page }) => {
     await page.goto('/activities')
     await expect(page).toHaveURL(/\/$/)

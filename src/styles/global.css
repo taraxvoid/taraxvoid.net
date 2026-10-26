@@ -1,112 +1,113 @@
-@import url("https://fonts.googleapis.com/css2?family=Spectral:wght@400;600;700&family=Courier+Prime:wght@400;700&display=swap");
 @import "tailwindcss";
 
 /* Redaction type family, self-hosted per the McKl webfont license
    (taraxvoid.net is the licensed domain). Regular is the readable
-   tier; the numbered cuts get progressively more bit-crushed. */
+   tier; the numbered cuts get progressively more bit-crushed.
+   Display is fallback, not swap: a cached font lands inside the 100ms block window,
+   so navigating between pages no longer flashes the fallback face. */
 @font-face {
     font-family: "Redaction";
     font-weight: 400;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
     src: url("/fonts/redaction/Redaction-Regular.woff2") format("woff2");
 }
 @font-face {
     font-family: "Redaction";
     font-weight: 700;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
     src: url("/fonts/redaction/Redaction-Bold.woff2") format("woff2");
 }
 @font-face {
     font-family: "Redaction";
     font-weight: 400;
     font-style: italic;
-    font-display: swap;
+    font-display: fallback;
     src: url("/fonts/redaction/Redaction-Italic.woff2") format("woff2");
 }
 @font-face {
     font-family: "Redaction 10";
     font-weight: 400;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
     src: url("/fonts/redaction/Redaction10-Regular.woff2") format("woff2");
 }
 @font-face {
     font-family: "Redaction 10";
     font-weight: 700;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
     src: url("/fonts/redaction/Redaction10-Bold.woff2") format("woff2");
 }
 @font-face {
     font-family: "Redaction 20";
     font-weight: 400;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
     src: url("/fonts/redaction/Redaction20-Regular.woff2") format("woff2");
 }
 @font-face {
     font-family: "Redaction 20";
     font-weight: 700;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
     src: url("/fonts/redaction/Redaction20-Bold.woff2") format("woff2");
 }
 @font-face {
     font-family: "Redaction 35";
     font-weight: 400;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
     src: url("/fonts/redaction/Redaction35-Regular.woff2") format("woff2");
 }
 @font-face {
     font-family: "Redaction 35";
     font-weight: 700;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
     src: url("/fonts/redaction/Redaction35-Bold.woff2") format("woff2");
 }
 @font-face {
     font-family: "Redaction 50";
     font-weight: 400;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
     src: url("/fonts/redaction/Redaction50-Regular.woff2") format("woff2");
 }
 @font-face {
     font-family: "Redaction 50";
     font-weight: 700;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
     src: url("/fonts/redaction/Redaction50-Bold.woff2") format("woff2");
 }
 @font-face {
     font-family: "Redaction 70";
     font-weight: 400;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
     src: url("/fonts/redaction/Redaction70-Regular.woff2") format("woff2");
 }
 @font-face {
     font-family: "Redaction 70";
     font-weight: 700;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
     src: url("/fonts/redaction/Redaction70-Bold.woff2") format("woff2");
 }
 @font-face {
     font-family: "Redaction 100";
     font-weight: 400;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
     src: url("/fonts/redaction/Redaction100-Regular.woff2") format("woff2");
 }
 @font-face {
     font-family: "Redaction 100";
     font-weight: 700;
     font-style: normal;
-    font-display: swap;
+    font-display: fallback;
     src: url("/fonts/redaction/Redaction100-Bold.woff2") format("woff2");
 }
 
@@ -194,24 +195,4 @@ a {
 }
 a:hover {
     color: var(--color-verified-hover);
-}
-
-/* Respect reduced motion for the View Transitions the layout defines. */
-@media (prefers-reduced-motion: reduce) {
-    ::view-transition-group(*),
-    ::view-transition-old(*),
-    ::view-transition-new(*) {
-        animation: none !important;
-    }
-}
-
-/* Pages swap instantly: the default crossfade read as lag. The paper frame
-   keeps one width on every page and snaps to the next page's height. */
-::view-transition-group(*),
-::view-transition-old(*),
-::view-transition-new(*) {
-    animation: none;
-}
-::view-transition-old(sheet) {
-    display: none;
 }

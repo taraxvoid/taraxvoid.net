@@ -19,10 +19,12 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        /* No fixed size: the row stretches it to Resume's height and the
-           ratio keeps it a circle. */
-        align-self: stretch;
-        aspect-ratio: 1;
+        /* Sized to match Resume (text-sm line + py-2 + 1px borders). Stretching
+           to the row with aspect-ratio instead let WebKit size the button from
+           the SVG's 300px default width, ballooning the whole header. */
+        flex: none;
+        width: calc(2.25rem + 2px);
+        height: calc(2.25rem + 2px);
         padding: 0;
         border: 1px solid var(--color-ink);
         border-radius: 50%;
@@ -51,8 +53,8 @@
        to the other side) in dark. No data-theme means "system", so follow
        the media query. */
     .theme-toggle .icon {
-        width: 50%;
-        height: 50%;
+        width: 1.125rem;
+        height: 1.125rem;
         transition: transform 0.2s ease;
     }
     @media (prefers-color-scheme: dark) {
@@ -76,11 +78,8 @@
         button.setAttribute('aria-label', resolved === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
     }
 
-    // The toggle is replaced on every ClientRouter navigation, so wire it up
-    // on each page load rather than once.
-    document.addEventListener('astro:page-load', () => {
-        const button = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
-        if (!button) return;
+    const button = document.querySelector<HTMLButtonElement>('[data-theme-toggle]');
+    if (button) {
         labelFor(button);
         button.hidden = false;
         button.addEventListener('click', () => {
@@ -94,5 +93,5 @@
             syncThemeColor(preference);
             labelFor(button);
         });
-    });
+    }
 </script>

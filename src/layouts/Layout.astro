@@ -1,5 +1,4 @@
 ---
-import { ClientRouter } from 'astro:transitions'
 import HeadMeta from '../components/HeadMeta.astro'
 import '../styles/global.css'
 
@@ -89,9 +88,19 @@ const jsonLd = {
         <link rel="alternate" type="application/json" href="/resume.json" title="Resume (JSON)" />
         <link rel="alternate" type="text/plain" href="/llms.txt" title="llms.txt" />
         <link rel="me" href="https://github.com/taraxvoid" />
+        {/* Fonts the header paints first, plus the Google faces, are fetched
+            up front instead of after the stylesheet is parsed (an @import
+            chain), so first paint already has them. */}
+        <link rel="preload" href="/fonts/redaction/Redaction20-Regular.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preload" href="/fonts/redaction/Redaction35-Regular.woff2" as="font" type="font/woff2" crossorigin />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Spectral:wght@400;600;700&family=Courier+Prime:wght@400;700&display=fallback"
+        />
         <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
         <HeadMeta />
-        <ClientRouter />
     </head>
     <body>
         <slot />

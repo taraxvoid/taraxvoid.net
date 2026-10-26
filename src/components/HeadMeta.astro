@@ -8,7 +8,7 @@ import { THEME_COLORS, THEME_STORAGE_KEY } from '../lib/theme'
 {/*
   Blocking on purpose: applies a stored light/dark choice before first paint
   so there is no flash. Mirrors readStoredPreference/applyPreference in
-  src/lib/theme.ts, which the toggle and theme-client.ts use after load.
+  src/lib/theme.ts, which the toggle uses after load.
 */}
 <script is:inline define:vars={{ key: THEME_STORAGE_KEY, colors: THEME_COLORS }}>
     try {
@@ -20,7 +20,4 @@ import { THEME_COLORS, THEME_STORAGE_KEY } from '../lib/theme'
             });
         }
     } catch (e) {}
-</script>
-<script>
-    import '../lib/theme-client';
 </script>

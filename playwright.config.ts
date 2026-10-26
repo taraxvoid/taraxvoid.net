@@ -16,6 +16,16 @@ export default definePreviewConfig({
             testIgnore: /a11y\.spec\.ts/,
         },
         {
+            name: 'mobile-safari',
+            use: devices['iPhone 16'],
+            testIgnore: /a11y\.spec\.ts/,
+        },
+        {
+            name: 'desktop-safari',
+            use: devices['Desktop Safari'],
+            testIgnore: /a11y\.spec\.ts/,
+        },
+        {
             name: 'a11y',
             use: devices['Pixel 7'],
             testMatch: /a11y\.spec\.ts/,

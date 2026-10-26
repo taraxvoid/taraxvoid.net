@@ -122,7 +122,9 @@ test.describe('without JavaScript', () => {
     })
 })
 
-test('an explicit choice survives client-side navigation', async ({ page }) => {
+test('an explicit choice survives navigating to another page', async ({
+    page,
+}) => {
     await page.goto('/')
     await toggle(page).click()
     await page.locator('header').getByRole('link', { name: 'Resume' }).click()
