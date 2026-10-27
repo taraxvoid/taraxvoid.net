@@ -20,13 +20,6 @@ export const projects: Project[] = [
     },
     {
         group: 'open-source',
-        title: 'Rookery',
-        description:
-            'Coding agents in capability tiers with guardrails enforced as code: sandboxed read-only agents, a safe-git allowlist and per-tier spend limits.',
-        repo: 'https://github.com/taraxvoid/rookery',
-    },
-    {
-        group: 'open-source',
         title: 'QueerOmaha.net',
         description:
             "Community-driven noncommercial resource for Omaha's queer community.",
