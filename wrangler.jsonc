@@ -25,6 +25,10 @@
         {
             "pattern": "taraxvoid.net",
             "custom_domain": true
+        },
+        {
+            "pattern": "taraxvoid.com",
+            "custom_domain": true
         }
     ]
 }
