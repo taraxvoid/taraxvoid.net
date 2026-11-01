@@ -1,6 +1,15 @@
+---
+interface Props {
+    /** Set on the h2 so a section can name itself with aria-labelledby. */
+    id?: string
+}
+
+const { id } = Astro.props
+---
+
 <div class="flex items-center gap-4 border-t pt-5 pb-2" style="border-color: var(--color-ink);">
     <span class="h-px flex-1" style="background: var(--color-paper-line);"></span>
-    <h2 class="font-redaction-35 text-sm font-bold uppercase tracking-[0.08em]">
+    <h2 id={id} class="font-redaction-35 text-sm font-bold uppercase tracking-[0.08em]">
         <slot />
     </h2>
     <span class="h-px flex-1" style="background: var(--color-paper-line);"></span>

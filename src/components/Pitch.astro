@@ -1,28 +1,31 @@
 ---
+import SectionHeading from './SectionHeading.astro'
+
 // The case for hiring, above the fold. Every claim here is drawn from the
 // vendored resume (src/data/resume.json); keep them in step when it changes.
 const proofs = [
     {
-        claim: 'Cut staging environments from six hours of manual work to 20 minutes per feature branch.',
-        source: 'Lindsay Corporation',
+        claim: 'Staging rebuilds from hours to minutes',
+        source: '@Lindsay',
     },
     {
-        claim: 'Built the security paved road for about 150 engineers: shared Go libraries, CI checks and self-serve scanners.',
-        source: 'Datadog',
+        claim: 'DevSecOps for product and infra teams',
+        source: '@Datadog',
     },
     {
-        claim: 'Rolled out coding agents to seven product teams, sandboxed with scoped permissions and spend limits.',
-        source: 'Lindsay Corporation',
+        claim: 'Published research and high-impact defensive cyber operations',
+        source: '@MITRE',
     },
 ]
 ---
 
 <section aria-labelledby="whoami" class="flex flex-col gap-5">
-    <h2 id="whoami" class="font-redaction-35 text-sm tracking-[0.2em]" style="color: var(--color-ink);">whoami</h2>
-    <p class="text-[19px] leading-snug sm:text-[21px]">
-        I build paved roads: CI/CD, supply-chain controls and guardrails that let developers and coding agents ship
-        quickly without shipping risk. Fifteen years in security and operations at Datadog, Salesforce, Yahoo, Tile
-        and MITRE.
+    <SectionHeading id="whoami">About Me</SectionHeading>
+    <p class="text-[17px] leading-snug sm:text-[18px]">
+        Production-grade CI/CD and paved-road security for SWEs and agents.
+    </p>
+    <p class="text-[17px] leading-snug sm:text-[18px]">
+        Seasoned operator with hyperscale, gov/mil/intel and Fortune 50 experience.
     </p>
     <ul class="flex flex-col gap-3">
         {
@@ -44,7 +47,7 @@ const proofs = [
                     </svg>
                     <p class="text-[15px] leading-relaxed">
                         {proof.claim}{' '}
-                        <span class="whitespace-nowrap font-mono text-xs" style="color: var(--color-secondary);">
+                        <span class="whitespace-nowrap font-mono text-s" style="color: var(--color-secondary);">
                             {proof.source}
                         </span>
                     </p>
@@ -52,7 +55,4 @@ const proofs = [
             ))
         }
     </ul>
-    <p class="text-[15px]">
-        <a href="/resume">Read the full resume</a> or <a href="/resume.pdf">download the PDF</a>.
-    </p>
 </section>

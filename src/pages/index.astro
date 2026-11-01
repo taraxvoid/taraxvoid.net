@@ -22,8 +22,8 @@ import Layout from '../layouts/Layout.astro'
             <main>
                 <h1 class="sr-only">Tara \X/ Void</h1>
                 <div class="mx-auto flex max-w-[620px] flex-col gap-3.5 pb-9 pt-5 sm:pb-10 sm:pt-6">
-                    <DossierRow label="AKA" emphasis>
-                        <RedactedBar wordLengths={[4, 10]} label="redacted" />
+                    <DossierRow label="Role" emphasis>
+                        <span class="font-redaction-35 text-[15px] tracking-wide">Platform Engineer: Developer Experience &amp; Security</span>
                     </DossierRow>
 
                     <DossierRow label="Pronouns" emphasis>
@@ -34,25 +34,7 @@ import Layout from '../layouts/Layout.astro'
                         </p>
                     </DossierRow>
 
-                    <DossierRow label="Role" emphasis>
-                        <span class="font-redaction-35 text-[15px] italic tracking-wide">Platform, DevEx &amp; Security Engineer</span>
-                    </DossierRow>
-
-                    <DossierRow label="Currently" emphasis>
-                        <span class="font-redaction-35 text-[15px] tracking-wide">
-                            Principal Engineer <span class="whitespace-nowrap">@ <a
-                                href="https://ravenflight.io"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="underline"
-                                style="color: var(--color-ink);">RavenFlight</a
-                            ></span>
-                        </span>
-                    </DossierRow>
-
-                    <hr class="border-0 border-t border-dashed" style="border-color: var(--color-paper-line);" />
                     <Pitch />
-                    <hr class="border-0 border-t border-dashed" style="border-color: var(--color-paper-line);" />
                     <ContactForm />
                 </div>
 
