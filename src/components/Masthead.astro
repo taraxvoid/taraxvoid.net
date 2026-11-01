@@ -96,8 +96,7 @@ const onResume = active === 'resume'
         justify-content: flex-end;
         gap: 0.5rem;
     }
-    /* Resume is the primary action, so it is filled; on the resume page it
-       drops to an outline to say "you are here". */
+    /* Resume is the primary action, so it is filled on every page. */
     a.masthead-nav-link {
         display: inline-block;
         border: 1px solid var(--color-verified);
@@ -113,16 +112,6 @@ const onResume = active === 'resume'
     a.masthead-nav-link:focus-visible {
         background: var(--color-verified-hover);
         border-color: var(--color-verified-hover);
-        color: var(--color-on-verified);
-    }
-    a.masthead-nav-link[aria-current='page'] {
-        background: transparent;
-        border-color: var(--color-verified);
-        color: var(--color-verified);
-    }
-    a.masthead-nav-link[aria-current='page']:hover,
-    a.masthead-nav-link[aria-current='page']:focus-visible {
-        background: var(--color-verified);
         color: var(--color-on-verified);
     }
 </style>
