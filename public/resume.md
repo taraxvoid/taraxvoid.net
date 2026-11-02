@@ -1,6 +1,6 @@
 # Tara \X/ Void
 
-Omaha, NE · open to onsite or hybrid
+Omaha, NE - open to onsite or hybrid
 
 ## Summary
 
