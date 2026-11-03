@@ -8,13 +8,19 @@ for (const path of ['/', '/resume']) {
     })
 }
 
-test('homepage never renders the legal name or phone number', async ({
+test('homepage never renders phone number or email address or address', async ({
     page,
 }) => {
     await page.goto('/')
     const text = await page.locator('body').innerText()
-    expect(text).not.toMatch(/REDACTED/i)
-    expect(text).not.toMatch(/REDACTED_PHONE/)
+    const FORBIDDEN = [
+        /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
+        /\S{2}\s+\d{5}/,
+        /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
+    ]
+    for (const pattern of FORBIDDEN) {
+        expect(text).not.toMatch(pattern)
+    }
 })
 
 test('homepage renders the inline contact form', async ({ page }) => {

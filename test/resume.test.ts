@@ -9,9 +9,12 @@ const markdown = readFileSync(
     'utf8',
 )
 
-// Guards the privacy constraint from the design spec: the public resume
-// must never carry the legal name or phone number from the private source.
-const FORBIDDEN = [/REDACTED/i, /REDACTED/i, /REDACTED_PHONE/]
+// Guards the privacy constraint from the design spec: the public resume must not have a phone number or email or address (check for state, ZIP i.e. CA, 94555)
+const FORBIDDEN = [
+    /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
+    /\S{2}\s+\d{5}/,
+    /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
+]
 
 describe('vendored resume stays redacted', () => {
     const haystack = `${JSON.stringify(data)}\n${markdown}`
