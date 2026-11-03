@@ -22,6 +22,24 @@ test('homepage renders the inline contact form', async ({ page }) => {
     await expect(page.locator('form#contact')).toBeVisible()
 })
 
+test('the contact form hides after a successful submission', async ({
+    page,
+}) => {
+    await page.route('**/api/contact', (route) =>
+        route.fulfill({ status: 200, body: '{}' }),
+    )
+    await page.goto('/')
+    await page.locator('#contact-message').fill('hello')
+    await page.locator('form#contact button[type="submit"]').click()
+    await expect(page.locator('#contact-status')).toHaveText(
+        'Message received.',
+    )
+    await expect(page.locator('#contact-message')).toBeHidden()
+    await expect(
+        page.locator('form#contact button[type="submit"]'),
+    ).toBeHidden()
+})
+
 test('the paper frame keeps the same width on every page', async ({ page }) => {
     const widths: number[] = []
     for (const path of ['/', '/resume']) {

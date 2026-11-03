@@ -130,6 +130,10 @@ const siteKey = import.meta.env.DEV
             animation: contact-blink 1.1s steps(1) infinite;
         }
     }
+    /* After a successful send, only the confirmation stays. */
+    form[data-sent] > :not(#contact-status) {
+        display: none;
+    }
     @keyframes contact-blink {
         50% {
             opacity: 0;
@@ -177,7 +181,6 @@ const siteKey = import.meta.env.DEV
         const idleLabel = button?.textContent?.trim() || 'Send Message';
 
         let widgetId: string | undefined;
-        let hideTimer: ReturnType<typeof setTimeout> | undefined;
 
         // Reveal the optional email field the first time the message field is used.
         message?.addEventListener('focus', () => {
@@ -197,16 +200,10 @@ const siteKey = import.meta.env.DEV
         form.addEventListener('reset', () => setTimeout(updateCount));
 
         const show = (kind: 'success' | 'error', text: string) => {
-            clearTimeout(hideTimer);
             status.textContent = text;
             status.style.borderColor = kind === 'success' ? 'var(--color-verified)' : 'var(--color-redpen)';
             status.style.color = kind === 'success' ? 'var(--color-verified)' : 'var(--color-redpen)';
             status.hidden = false;
-            if (kind === 'success') {
-                hideTimer = setTimeout(() => {
-                    status.hidden = true;
-                }, 5000);
-            }
         };
 
         loadTurnstile()
@@ -235,6 +232,7 @@ const siteKey = import.meta.env.DEV
                 }
                 if (!response.ok) throw new Error(String(response.status));
                 form.reset();
+                form.dataset.sent = '';
                 show('success', 'Message received.');
             } catch {
                 show('error', 'Something went wrong. Please try again.');
