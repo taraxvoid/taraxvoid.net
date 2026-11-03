@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+import { FORBIDDEN } from '../privacy'
 
 for (const path of ['/', '/resume']) {
     test(`${path} loads`, async ({ page }) => {
@@ -13,12 +14,7 @@ test('homepage never renders phone number or email address or address', async ({
 }) => {
     await page.goto('/')
     const text = await page.locator('body').innerText()
-    const FORBIDDEN = [
-        /^[^@\s]+@[^@\s]+\.[^@\s]+$/,
-        /\S{2}\s+\d{5}/,
-        /^(\+\d{1,2}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/,
-    ]
-    for (const pattern of FORBIDDEN) {
+    for (const pattern of Object.values(FORBIDDEN)) {
         expect(text).not.toMatch(pattern)
     }
 })
