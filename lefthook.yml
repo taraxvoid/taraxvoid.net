@@ -4,6 +4,6 @@
 # (here: test:push is lint + the full test run).
 remotes:
   - git_url: https://github.com/taraxvoid/voidflow
-    ref: v0.13.0
+    ref: v0.16.0
     configs:
       - lefthook/site.yml
