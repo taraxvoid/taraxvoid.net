@@ -27,6 +27,12 @@ describe('vendored resume', () => {
         expect(() => parseResume({ ...data, version: 2 })).toThrow()
         expect(() => parseResume({ ...data, experience: [] })).toThrow()
         expect(() => parseResume(null)).toThrow()
+        const { highlights: _, ...withoutHighlights } = data as Record<
+            string,
+            unknown
+        >
+        expect(() => parseResume(withoutHighlights)).not.toThrow()
+        expect(() => parseResume({ ...data, highlights: ['ok', ''] })).toThrow()
     })
 
     it('is the Omaha variant', () => {

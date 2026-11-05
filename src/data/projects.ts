@@ -33,13 +33,13 @@ export const projects: Project[] = [
         href: 'https://queeromaha.net',
         linkLabel: 'Website',
         annotation: 'here and queer',
-        repo: 'https://github.com/taraxvoid/queeromaha',
+        repo: 'https://github.com/queeromaha/queeromaha.net',
     },
     {
         group: 'open-source',
         title: 'SoundryOmaha.org',
         description:
-            'Omaha experimental music collective ran by Stacey Barelos',
+            'Omaha experimental music collective run by Stacey Barelos.',
         href: 'https://soundryomaha.org',
         linkLabel: 'Website',
         annotation: 'amped up',

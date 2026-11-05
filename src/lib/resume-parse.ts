@@ -12,6 +12,8 @@ export interface Resume {
     version: 1
     name: string
     summary: string
+    /** Optional: added to version 1 by taraxvoid/resumes; older output lacks it. */
+    highlights?: string[]
     location: string
     experience: ExperienceEntry[]
     coreSkills: string[]
@@ -39,6 +41,7 @@ export function parseResume(value: unknown): Resume {
         r.version === 1 &&
         isString(r.name) &&
         isString(r.summary) &&
+        (r.highlights === undefined || isStrings(r.highlights)) &&
         isString(r.location) &&
         Array.isArray(r.experience) &&
         r.experience.length > 0 &&
