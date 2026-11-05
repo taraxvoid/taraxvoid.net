@@ -6,6 +6,7 @@ import {
     coreSkills,
     education,
     experience,
+    highlights,
     location,
     openSource,
     summary,
@@ -39,6 +40,17 @@ const downloadName = (ext: string) => `resume_Tara-X-Void-${stamp}.${ext}`
             </div>
 
             <p class="max-w-[70ch] pb-8 text-[15px] leading-relaxed">{summary}</p>
+
+            {
+                highlights.length > 0 && (
+                    <div class="border-t pt-5" style="border-color: var(--color-ink);">
+                        <h2 class="pb-3 text-[15px] font-bold">Highlights</h2>
+                        <ul class="flex flex-col gap-1.5 pb-8 text-[15px] leading-relaxed">
+                            {highlights.map((h) => <li>{h}</li>)}
+                        </ul>
+                    </div>
+                )
+            }
 
             <div class="border-t pt-5" style="border-color: var(--color-ink);">
                 <h2 class="pb-3 text-[15px] font-bold">Core skills</h2>

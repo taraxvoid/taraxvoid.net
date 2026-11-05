@@ -14,6 +14,7 @@ export const resume = parseResume(data)
 export const {
     name,
     summary,
+    highlights = [],
     location,
     experience,
     coreSkills,
