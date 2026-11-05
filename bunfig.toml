@@ -1,5 +1,10 @@
+# Written by voidflow v1.0.0-next.3: https://www.npmjs.com/package/@taraxvoid/voidflow
+# Set up a repo the same way: npx @taraxvoid/voidflow init --kind site
 [install]
 minimumReleaseAge = 259200 # 3 days
 
 # Packages that bypass the gate
 minimumReleaseAgeExcludes = ["@taraxvoid/voidflow", "@types/bun", "bun-types", "typescript", "astro", "@astrojs/cloudflare", "@astrojs/sitemap", "@astrojs/check", "@astrojs/react", "@astrojs/compiler-rs", "@astrojs/markdown-satteri", "@astrojs/compiler-binding", "@playwright/test", "playwright", "playwright-core"]
+
+[install.security]
+scanner = "@socketsecurity/bun-security-scanner"

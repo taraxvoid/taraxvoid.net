@@ -1,7 +1,10 @@
+# Written by voidflow v1.0.0-next.3: https://www.npmjs.com/package/@taraxvoid/voidflow
+# Set up a repo the same way: npx @taraxvoid/voidflow init --kind site
 [tools]
-bun = "latest"
-node = "26.13.0"
 lefthook = "2.2.2"
+gitleaks = "8.30.1"
 jactionlint = "2.4.0"
+bun = "1.4.4"
+node = "26.13.0"
 # Used by jactionlint to check `run:` scripts.
 shellcheck = "0.11.0"
