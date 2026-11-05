@@ -14,12 +14,23 @@ permissions:
 
 jobs:
   validate:
-    uses: taraxvoid/voidflow/.github/workflows/site-ci.yml@2702230a04e50c6592bbc816042371f695e2db93 # v0.13.0
+    uses: taraxvoid/voidflow/.github/workflows/site-ci.yml@5693c9455d52f7fa419ff4be747c218bac3814f8 # v0.16.0
     with:
       single-environment: true
 
+  # Sends voidflow's gitleaks and zizmor SARIF to code scanning (free now that
+  # the repo is public).
+  sarif:
+    needs: validate
+    if: ${{ !cancelled() && needs.validate.result != 'skipped' }}
+    permissions:
+      contents: read
+      actions: read
+      security-events: write
+    uses: taraxvoid/voidflow/.github/workflows/upload-sarif.yml@5693c9455d52f7fa419ff4be747c218bac3814f8 # v0.16.0
+
   resolve-env:
-    uses: taraxvoid/voidflow/.github/workflows/resolve-env.yml@cc14d77befdb4532e8ba448d37b0f4087ca99e1d # main after voidflow#118; next release (0.11.2) includes it
+    uses: taraxvoid/voidflow/.github/workflows/resolve-env.yml@5693c9455d52f7fa419ff4be747c218bac3814f8 # v0.16.0
     with:
       single-environment: true
 
@@ -44,7 +55,7 @@ jobs:
         run: bun run build
 
       - name: Deploy
-        uses: taraxvoid/voidflow/actions/cloudflare-deploy@2702230a04e50c6592bbc816042371f695e2db93 # v0.13.0
+        uses: taraxvoid/voidflow/actions/cloudflare-deploy@5693c9455d52f7fa419ff4be747c218bac3814f8 # v0.16.0
         with:
           env: ${{ needs.resolve-env.outputs.env }}
           cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
