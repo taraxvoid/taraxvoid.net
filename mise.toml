@@ -3,7 +3,7 @@
 [tools]
 lefthook = "2.2.2"
 gitleaks = "8.30.1"
-jactionlint = "2.4.0"
+jactionlint = "2.5.0"
 bun = "1.4.4"
 node = "26.13.0"
 # Used by jactionlint to check `run:` scripts.
