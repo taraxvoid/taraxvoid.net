@@ -18,7 +18,7 @@ permissions:
 
 jobs:
   validate:
-    uses: taraxvoid/voidflow/.github/workflows/site-ci.yml@8f02fb9616caadd3aa11d575b5c6038cef09de8d # v1.0.0-next.3
+    uses: taraxvoid/voidflow/.github/workflows/site-ci.yml@2a0d7726b9dd3446a831a04dbb1d0f879b22d2b5 # v1.0.0-next.4
 
   sarif:
     needs: validate
@@ -27,7 +27,7 @@ jobs:
       contents: read
       actions: read
       security-events: write
-    uses: taraxvoid/voidflow/.github/workflows/upload-sarif.yml@8f02fb9616caadd3aa11d575b5c6038cef09de8d # v1.0.0-next.3
+    uses: taraxvoid/voidflow/.github/workflows/upload-sarif.yml@2a0d7726b9dd3446a831a04dbb1d0f879b22d2b5 # v1.0.0-next.4
 
   # Pushes to main deploy to prod. There are no PR previews yet (no preview
   # env in wrangler.jsonc), so this job only runs on push.
@@ -47,18 +47,18 @@ jobs:
 
       # Fails on anything but main or a pull request.
       - id: env
-        uses: taraxvoid/voidflow/actions/branch-env-map@8f02fb9616caadd3aa11d575b5c6038cef09de8d # v1.0.0-next.3
+        uses: taraxvoid/voidflow/actions/branch-env-map@2a0d7726b9dd3446a831a04dbb1d0f879b22d2b5 # v1.0.0-next.4
 
       - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
 
       - name: Install dependencies
-        uses: taraxvoid/voidflow/actions/bun-install@8f02fb9616caadd3aa11d575b5c6038cef09de8d # v1.0.0-next.3
+        uses: taraxvoid/voidflow/actions/bun-install@2a0d7726b9dd3446a831a04dbb1d0f879b22d2b5 # v1.0.0-next.4
 
       - name: Build
         run: bun run build
 
       - name: Deploy
-        uses: taraxvoid/voidflow/actions/cloudflare-deploy@8f02fb9616caadd3aa11d575b5c6038cef09de8d # v1.0.0-next.3
+        uses: taraxvoid/voidflow/actions/cloudflare-deploy@2a0d7726b9dd3446a831a04dbb1d0f879b22d2b5 # v1.0.0-next.4
         with:
           env: ${{ steps.env.outputs.env }}
           cloudflare-api-token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
