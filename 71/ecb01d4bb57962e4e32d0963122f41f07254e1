@@ -1,0 +1,38 @@
+package.json
+  s_b2e7007d0153b9::t_246e858fa13105 46
+  s_b2e7007d0153b9::t_be19f2854a2546 27-28
+.github/workflows/ci.yml
+  s_b2e7007d0153b9::t_926483d6a4e030 1,21,30,50,55,61
+.github/workflows/voidflow-drift.yml
+  s_b2e7007d0153b9::t_b627c09a68e799 1-22
+bun.lock
+  s_b2e7007d0153b9::t_f4393258855c21 20,433,1041,1243-1244,1299-1300
+bunfig.toml
+  s_b2e7007d0153b9::t_4ab598b47b835f 1
+lefthook.yml
+  s_b2e7007d0153b9::t_19324d0fff3027 1-2,5
+mise.toml
+  s_b2e7007d0153b9::t_889c664a5b1f2d 1
+renovate.json
+  s_b2e7007d0153b9::t_2bd2ba1fcb6360 5
+unlighthouse.config.ts
+  s_b2e7007d0153b9::t_ae2b033a8c016d 1
+voidflow.config.ts
+  s_b2e7007d0153b9::t_355e91b41e33a3 1-5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "71ecb01d4bb57962e4e32d0963122f41f07254e1",
+  "prompts": {},
+  "sessions": {
+    "s_b2e7007d0153b9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2b69cc20-8dd9-42a9-8dc3-d40c2c954081",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "void <1711810+taraxvoid@users.noreply.github.com>"
+    }
+  }
+}
