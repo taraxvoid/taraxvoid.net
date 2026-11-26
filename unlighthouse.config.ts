@@ -1,4 +1,4 @@
-// Written by voidflow v1.0.0-next.3: https://www.npmjs.com/package/@taraxvoid/voidflow
+// Written by voidflow v1.5.0: https://www.npmjs.com/package/@taraxvoid/voidflow
 // Set up a repo the same way: npx @taraxvoid/voidflow init --kind site
 // Example per-repo config, copy to the repo root as `unlighthouse.config.ts`.
 // The runner supplies `site`, so it is not set here.
